@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const Welcome: FC = () => {
-    const { push } = useHistory();
+    const history = useHistory();
 
     const handleLogin = () => {
-        push('/login');
+        history.push('/login');
     }
 
     const handleSignup = () => {
-        push('/sign-up');
+        // history.push('/sign-up');
 
     }
 
