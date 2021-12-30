@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Movies = () => {
-    return (
-        <div>
-            movies
-        </div>
-    )
-}
+  return <div>movies</div>;
+};
 
-export { Movies }
+export { Movies };
