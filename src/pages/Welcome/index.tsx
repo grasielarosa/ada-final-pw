@@ -1,25 +1,21 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 const Welcome: FC = () => {
-    const history = useHistory();
-
-    const handleLogin = () => {
-        history.push('/login');
-    }
-
-    const handleSignup = () => {
-        // history.push('/sign-up');
-
-    }
 
     return (
         <>
-            <h3>Welcome to</h3>
-            <h1>CinemAda</h1>
-            <button onClick={handleLogin}>Login</button>
-            <button onClick={handleSignup}>SignUp</button>
+            <div className='container'>
+                <div className='row'>
+                    <div className='col'>
+                        <h3>Welcome to</h3>
+                        <h1>CinemAda</h1>
 
+                        <Button>Login</Button>
+                        <Button>SignUP</Button>
+                    </div>
+                </div>
+            </div>
         </>
     )
 };
