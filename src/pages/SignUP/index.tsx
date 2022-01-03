@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { SignUp as SignUpForm } from '../../components';
 
-const SignUp = () => {
-  <SignUpForm />;
+const SignUp: FC = () => {
+  return <SignUpForm />;
 };
 
 export { SignUp };
