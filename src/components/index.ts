@@ -1,2 +1,2 @@
 export { Container } from './commons';
-export { SignUp } from './forms';
+export { SignUp, Login } from './forms';

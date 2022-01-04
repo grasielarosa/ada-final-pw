@@ -1,9 +1,13 @@
-import React from 'react';
-import { getDataMovies } from '../../api/tmdb';
-import { getDataUsers } from '../../api/myApi';
+import React, { FC } from 'react';
 
-const Login = () => {
-  return <div>hello, world</div>;
+import { Container, Login as LoginForm } from '../../components';
+
+const Login: FC = () => {
+  return (
+    <Container title="Login">
+      <LoginForm />
+    </Container>
+  );
 };
 
 export { Login };
