@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import { Button, Card, CardText, CardTitle } from 'reactstrap';
+import { Footer } from '../../components';
 
 const Welcome: FC = () => {
   return (
@@ -21,6 +22,7 @@ const Welcome: FC = () => {
             </div>
           </Card>
         </div>
+        <Footer />
       </div>
     </div>
   );
