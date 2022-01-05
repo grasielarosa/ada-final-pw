@@ -44,5 +44,12 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'no-restricted-syntax': [
+      'error',
+      'FunctionExpression',
+      'WithStatement',
+      "BinaryExpression[operator='in']",
+    ],
+    'guard-for-in': 0,
   },
 };
