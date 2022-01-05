@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
 
-import { Container, Login as LoginForm } from '../../components';
+import { Container, Login as LoginForm, Wrapper } from '../../components';
 
 const Login: FC = () => {
   return (
-    <Container title="Login">
-      <LoginForm />
-    </Container>
+    <Wrapper hideHeader hideFooter>
+      <Container title="Login">
+        <LoginForm />
+      </Container>
+    </Wrapper>
   );
 };
 

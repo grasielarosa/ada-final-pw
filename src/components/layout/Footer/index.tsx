@@ -4,10 +4,10 @@ import { Col, Row } from 'reactstrap';
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="align-self-end">
       <Row>
-        <Col className="align-items-end">
-          <p className="text-secondary text-center">
+        <Col className="">
+          <p className="text-secondary text-center fw-light">
             developed by{' '}
             <Link
               className="text-secondary text-decoration-none"
