@@ -16,7 +16,7 @@ const Header = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <header>
+    <header className="align-self-start">
       <Navbar fade expand="md" className="mx-4">
         <NavbarBrand className="text-secondary">CinemAda</NavbarBrand>
         <NavbarToggler className="me-2" onClick={toggle} />

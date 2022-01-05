@@ -1,7 +1,8 @@
 import React from 'react';
+import { Wrapper } from '../../components';
 
 const Detail = () => {
-  return <div>Detail</div>;
+  return <Wrapper />;
 };
 
 export { Detail };
