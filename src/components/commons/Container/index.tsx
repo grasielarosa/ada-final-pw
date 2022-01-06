@@ -1,5 +1,5 @@
 import React, { Children, FC } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 
 type Props = {
   title: string;
@@ -7,7 +7,7 @@ type Props = {
 
 const ContainerStyle: FC<Props> = ({ children, title }) => {
   return (
-    <div className="col-sm-12 mx-auto w-50 ">
+    <div className="col-sm-12 mx-auto w-50 align-self-center">
       <div className="h-100 justify-content-center">
         <Container className="bg-secondary p-5 rounded">
           <h3 className="text-center mb-4">{title}</h3>
