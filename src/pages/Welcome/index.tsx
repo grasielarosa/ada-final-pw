@@ -1,10 +1,11 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardText, CardTitle } from 'reactstrap';
+import { Button, Card, CardText } from 'reactstrap';
 import { Footer } from '../../components';
+import { withAuth } from '../../hoc';
 
-const Welcome: FC = () => {
+const WelcomePage: FC = () => {
   return (
     <div className="container h-100">
       <div className="row align-items-center h-100">
@@ -39,4 +40,4 @@ const Welcome: FC = () => {
   );
 };
 
-export { Welcome };
+export const Welcome = withAuth(WelcomePage);

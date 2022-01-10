@@ -1,5 +1,5 @@
-import React, { Children, FC } from 'react';
-import { Container, Row } from 'reactstrap';
+import React, { FC } from 'react';
+import { Container } from 'reactstrap';
 
 type Props = {
   title?: string;

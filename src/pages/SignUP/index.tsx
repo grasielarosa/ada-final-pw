@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { SignUp as SignUpForm, Container, Wrapper } from '../../components';
+import { withAuth } from '../../hoc';
 
-const SignUp: FC = () => {
+const SignUpPage: FC = () => {
   return (
     <Wrapper hideHeader>
       <Container title="SignUp Cinemada">
@@ -11,4 +12,4 @@ const SignUp: FC = () => {
   );
 };
 
-export { SignUp };
+export const SignUp = withAuth(SignUpPage);

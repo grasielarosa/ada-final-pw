@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { Wrapper } from '../../components';
+import { withAuth } from '../../hoc';
 
-const Users = () => {
-  return <div>Users</div>;
+const UsersPage: FC = () => {
+  return (
+    <Wrapper>
+      <h1>users</h1>
+    </Wrapper>
+  );
 };
 
-export { Users };
+export const Users = withAuth(UsersPage);

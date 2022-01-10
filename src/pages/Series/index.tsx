@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { withAuth } from '../../hoc';
 
-const Series = () => {
-  <div>teste</div>;
+const SeriesPage: FC = () => {
+  return <div>series</div>;
 };
 
-export { Series };
+export const Series = withAuth(SeriesPage);

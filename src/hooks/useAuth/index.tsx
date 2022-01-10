@@ -1,14 +1,15 @@
+/* eslint-disable no-use-before-define */
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
 
-type Payload = Omit<User, 'id' | 'birthdate' | 'name'>;
+// type Payload = Omit<User, 'id' | 'birthdate' | 'name'>;
 
 const useAuth = () => {
   const [tokenStorage, setTokenStorage] = useState<string | undefined>(
-    localStorage.getItem('') || undefined
+    localStorage.getItem('cinemada-token') || undefined
   );
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>();
 
@@ -17,6 +18,10 @@ const useAuth = () => {
   useEffect(() => {
     if (tokenStorage) localStorage.setItem('cinemada-token', tokenStorage);
   }, [tokenStorage]);
+
+  useEffect(() => {
+    loginWithToken();
+  });
 
   const createUserToken = async (user: User): Promise<string | null> => {
     const newToken = Math.random().toString(36).substr(2);
@@ -48,10 +53,6 @@ const useAuth = () => {
         if (token) {
           setTokenStorage(token);
           push('/home');
-          // setCurrentUser(user);
-          setIsUserLoggedIn(true);
-        } else {
-          setIsUserLoggedIn(false);
         }
       } else {
         throw new Error('el usuario no existe o la contraseña es erronea');
@@ -61,14 +62,35 @@ const useAuth = () => {
     }
   };
 
-  // const loginWithToken = () => {};
+  const loginWithToken = async () => {
+    let findUser;
+
+    try {
+      const response = await myApi.get('/users.json');
+
+      const users: User[] = mapToArray(response.data);
+
+      if (tokenStorage) {
+        findUser = users.find((user) => user.sessionToken === tokenStorage);
+      }
+
+      if (findUser) {
+        setIsUserLoggedIn(true);
+      } else {
+        setIsUserLoggedIn(false);
+      }
+    } catch (e) {
+      // console.log(e);
+    }
+  };
 
   const logout = () => {
     localStorage.removeItem('cinemada-token');
     setIsUserLoggedIn(false);
     push('login');
   };
-  return { isUserLoggedIn, login, logout };
+
+  return { isUserLoggedIn, login, loginWithToken, logout };
 };
 
 export { useAuth };

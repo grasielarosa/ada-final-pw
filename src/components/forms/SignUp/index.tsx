@@ -1,12 +1,5 @@
 import React, { FC, FormEvent, useState } from 'react';
-import {
-  Button,
-  Form,
-  FormFeedback,
-  FormGroup,
-  Input,
-  Label,
-} from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { signup } from './api';
 
 const defaultValues = {
