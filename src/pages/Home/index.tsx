@@ -1,7 +1,8 @@
 import React from 'react';
 import { Header } from '../../components';
+import { withAuth } from '../../hoc';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
       <Header />
@@ -10,4 +11,4 @@ const Home = () => {
   );
 };
 
-export { Home };
+export const Home = withAuth(HomePage);
