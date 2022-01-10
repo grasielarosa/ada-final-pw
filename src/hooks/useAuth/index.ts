@@ -49,7 +49,7 @@ const useAuth = () => {
           setTokenStorage(token);
           push('/home');
           // setCurrentUser(user);
-          // setIsUserLoggedIn(true);
+          setIsUserLoggedIn(true);
         } else {
           setIsUserLoggedIn(false);
         }
@@ -65,9 +65,10 @@ const useAuth = () => {
 
   const logout = () => {
     localStorage.removeItem('cinemada-token');
+    setIsUserLoggedIn(false);
     push('login');
   };
-  return { login, logout };
+  return { isUserLoggedIn, login, logout };
 };
 
 export { useAuth };
