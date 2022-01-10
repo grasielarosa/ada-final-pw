@@ -63,11 +63,11 @@ const useAuth = () => {
 
   // const loginWithToken = () => {};
 
-  // const logout = () => {
-  //   localStorage.removeItem('');
-  //   // push('login');
-  // };
-  return { login };
+  const logout = () => {
+    localStorage.removeItem('cinemada-token');
+    push('login');
+  };
+  return { login, logout };
 };
 
 export { useAuth };

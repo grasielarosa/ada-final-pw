@@ -1,6 +1,5 @@
 /* eslint-disable react/no-this-in-sfc */
 import React, { useState } from 'react';
-
 import {
   Collapse,
   Nav,
@@ -11,9 +10,13 @@ import {
   NavItem,
 } from 'reactstrap';
 
+import { useAuth } from '../../../hooks';
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+
+  const { logout } = useAuth();
 
   return (
     <header className="align-self-start">
@@ -48,7 +51,7 @@ const Header = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="text-secondary" href="/logout">
+              <NavLink className="text-secondary" href="#" onClick={logout}>
                 logout
               </NavLink>
             </NavItem>
