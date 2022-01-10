@@ -1,11 +1,10 @@
 import React from 'react';
-import { getDataMovies } from '../../api/tmdb';
-import { CardGroup, Wrapper } from '../../components';
+import { Wrapper } from '../../components';
 
 const Movies = () => {
   return (
     <Wrapper hideFooter>
-      <CardGroup />
+      <h1>movies</h1>
     </Wrapper>
   );
 };
