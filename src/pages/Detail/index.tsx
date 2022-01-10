@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Wrapper } from '../../components';
+import { withAuth } from '../../hoc';
 
-const Detail: FC = () => {
+const DetailPage: FC = () => {
   return (
     <Wrapper>
       <h1>teste</h1>
@@ -9,4 +10,4 @@ const Detail: FC = () => {
   );
 };
 
-export { Detail };
+export const Detail = withAuth(DetailPage);

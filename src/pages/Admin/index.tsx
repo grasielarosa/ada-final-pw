@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import { Form, Input, FormGroup, Label } from 'reactstrap';
 import { CardGroup, Wrapper } from '../../components';
+import { withAuth } from '../../hoc';
 
-const Admin: FC = () => {
+const AdminPage: FC = () => {
   return (
     <Wrapper hideFooter>
       <Form action="">
@@ -24,4 +25,4 @@ const Admin: FC = () => {
   );
 };
 
-export { Admin };
+export const Admin = withAuth(AdminPage);
