@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header className="align-self-start">
-      <Navbar fade expand="md" className="mx-4">
+      <Navbar expand="md" className="mx-4">
         <NavbarBrand className="text-secondary">CinemAda</NavbarBrand>
         <NavbarToggler className="me-2" onClick={toggle} />
         <Collapse className="flex-row-reverse" isOpen={isOpen} navbar>

@@ -13,7 +13,7 @@ const Wrapper: FC<Props> = ({ children, hideFooter, hideHeader }) => {
     <Container className="h-100">
       <Row className="h-100">
         {!hideHeader && <Header />}
-        <main className="row align-self-center">{children}</main>
+        <main className="row">{children}</main>
         {!hideFooter && <Footer />}
       </Row>
     </Container>

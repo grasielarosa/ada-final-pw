@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Card, CardText, CardTitle } from 'reactstrap';
 import { Footer } from '../../components';
 
@@ -14,10 +15,20 @@ const Welcome: FC = () => {
             {/* <CardTitle tag="h1">CinemAda</CardTitle> */}
             <div>
               <Button outline className="btn-outline-primary">
-                Login
+                <Link
+                  to="/login"
+                  className="text-decoration-none text-secondary"
+                >
+                  Login
+                </Link>
               </Button>
               <Button outline className="btn-outline-primary">
-                SignUP
+                <Link
+                  to="/sign-up"
+                  className="text-decoration-none text-secondary"
+                >
+                  Signup
+                </Link>
               </Button>
             </div>
           </Card>

@@ -1,16 +1,9 @@
 import { theMovieApi } from '../utils';
 
-type Test = [
-  {
-    id: number;
-    name: string;
-  }
-];
-
-const getDataMovies = async (): Promise<Test> => {
-  const response = await theMovieApi.get('genre/movie/list');
-  console.log(response.data);
-  return response.data;
+const getDataMovies = async () => {
+  const response = await theMovieApi.get('/movie/popular');
+  console.log(response.data.results);
+  return response.data.results;
 };
 
 export { getDataMovies };
