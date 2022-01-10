@@ -2,7 +2,8 @@ import React, { Children, FC } from 'react';
 import { Container, Row } from 'reactstrap';
 
 type Props = {
-  title: string;
+  title?: string;
+  classname?: string;
 };
 
 const ContainerStyle: FC<Props> = ({ children, title }) => {
