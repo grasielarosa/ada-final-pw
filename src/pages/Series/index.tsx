@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Series = () => {
-  return <div>Series</div>;
+  <div>teste</div>;
 };
 
 export { Series };

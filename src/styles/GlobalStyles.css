@@ -40,6 +40,10 @@ h2, h3 {
 .bg-secondary {
   background-color: #FFFACD !important;
 }
+
+.bg-success {
+  background-color: #430A6C !important;
+}
 .text-secondary {
   color: #FFFACD !important;
 }
