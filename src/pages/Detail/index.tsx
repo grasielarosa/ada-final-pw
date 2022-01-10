@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Wrapper } from '../../components';
-import { Loading } from '../../components/commons';
 
-const Detail = () => {
+const Detail: FC = () => {
   return (
     <Wrapper>
       <h1>teste</h1>

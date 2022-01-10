@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <footer className="align-self-end">
       <Row>

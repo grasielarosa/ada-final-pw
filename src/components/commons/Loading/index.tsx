@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { FC, useState } from 'react';
 import SyncLoader from 'react-spinners/SyncLoader';
 import { Toast, ToastBody } from 'reactstrap';
 
-const Loading = () => {
+const Loading: FC = () => {
   const [loading, setLoading] = useState();
   return (
     <div className="p-3 my-2 rounded col-sm-12 mx-auto w-25 align-self-center">

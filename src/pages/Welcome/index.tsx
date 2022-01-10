@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardText, CardTitle } from 'reactstrap';
+import { Button, Card, CardText } from 'reactstrap';
 import { Footer } from '../../components';
 
 const Welcome: FC = () => {

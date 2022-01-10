@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Wrapper } from '../../components';
 
-const Movies = () => {
+const Movies: FC = () => {
   return (
     <Wrapper hideFooter>
       <h1>movies</h1>

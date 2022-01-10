@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Series = () => {
-  <div>teste</div>;
+const Series: FC = () => {
+  return <div>series</div>;
 };
 
 export { Series };

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Form, Input, FormGroup, Label } from 'reactstrap';
 import { CardGroup, Wrapper } from '../../components';
 
-const Admin = () => {
+const Admin: FC = () => {
   return (
     <Wrapper hideFooter>
       <Form action="">

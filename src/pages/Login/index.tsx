@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
 import { Container, Login as LoginForm, Wrapper } from '../../components';
+import { withAuth } from '../../hoc';
 
-const Login: FC = () => {
+const LoginPage: FC = () => {
   return (
     <Wrapper hideHeader hideFooter>
       <Container title="Login">
@@ -12,4 +13,4 @@ const Login: FC = () => {
   );
 };
 
-export { Login };
+export const Login = withAuth(LoginPage);

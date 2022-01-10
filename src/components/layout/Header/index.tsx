@@ -1,5 +1,5 @@
 /* eslint-disable react/no-this-in-sfc */
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
   Collapse,
   Nav,
@@ -12,7 +12,7 @@ import {
 
 import { useAuth } from '../../../hooks';
 
-const Header = () => {
+const Header: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
