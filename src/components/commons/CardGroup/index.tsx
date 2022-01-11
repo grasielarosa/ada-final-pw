@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import {
   Button,
   Card,
@@ -11,19 +11,14 @@ import {
   Row,
 } from 'reactstrap';
 
-import { getDataMovies } from '../../../api/tmdb';
-import { Data } from '../../../types';
 import defaultImage from '../../../assets/images/image-not-found.jpeg';
+import { Data } from '../../../types';
 
-const CardGroup: FC = () => {
-  const [data, setData] = useState<Data[]>();
+type Props = {
+  api: Data[] | undefined;
+};
 
-  useEffect(() => {
-    getDataMovies().then((response) => {
-      setData(response);
-    });
-  }, []);
-
+const CardGroup: FC<Props> = ({ api }) => {
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -38,7 +33,7 @@ const CardGroup: FC = () => {
     row-cols-xl-7
     rounded"
     >
-      {data?.map((movie) => (
+      {api?.map((movie) => (
         <Card key={movie.id} className="bg-secondary text-primary">
           <CardImg
             alt="teste"
