@@ -1,4 +1,4 @@
-import { theMovieApi } from '../../utils';
+import { theMovieApi, myApi } from '../../utils';
 
 const getDataMovies = async () => {
   const response = await theMovieApi.get('/movie/top_rated');
@@ -10,4 +10,8 @@ const getSearchMulti = async (search: string | number) => {
   return response.data.results;
 };
 
-export { getDataMovies, getSearchMulti };
+const postDataMedia = async () => {
+  // await myApi.post('data-media');
+};
+
+export { getDataMovies, getSearchMulti, postDataMedia };

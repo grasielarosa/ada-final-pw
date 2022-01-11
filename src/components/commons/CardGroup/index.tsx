@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import React, { FC } from 'react';
+import React, { EventHandler, FC } from 'react';
 import {
   Button,
   Card,
@@ -16,9 +16,10 @@ import { Data } from '../../../types';
 
 type Props = {
   api: Data[] | undefined;
+  handleButton: EventHandler<React.SyntheticEvent<any, Event>>;
 };
 
-const CardGroup: FC<Props> = ({ api }) => {
+const CardGroup: FC<Props> = ({ api, handleButton }) => {
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -48,7 +49,9 @@ const CardGroup: FC<Props> = ({ api }) => {
               {movie.vote_average}
             </CardSubtitle>
             <CardText>{movie.popularity}</CardText>
-            <Button className="align-self-end">Button</Button>
+            <Button onClick={handleButton} className="align-self-end">
+              add
+            </Button>
           </CardBody>
         </Card>
       ))}

@@ -9,6 +9,7 @@ export type User = {
 };
 
 export type Data = {
+  name?: string;
   poster_path: string | null;
   adult?: boolean;
   overview?: string;
@@ -23,4 +24,5 @@ export type Data = {
   vote_count?: number;
   video?: boolean;
   vote_average?: number;
+  media_type?: string;
 };
