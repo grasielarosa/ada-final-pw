@@ -87,7 +87,7 @@ const useAuth = () => {
   const logout = () => {
     localStorage.removeItem('cinemada-token');
     setIsUserLoggedIn(false);
-    push('login');
+    push('/');
   };
 
   return { isUserLoggedIn, login, loginWithToken, logout };

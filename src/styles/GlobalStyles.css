@@ -12,25 +12,28 @@ body {
   font-family: 'Outfit', sans-serif;
   color: #36344a;
   background: linear-gradient(to top, #2b283d, #1b1a27);
+}
 
-  }
-
-html, body, #root {
+html,
+body,
+#root {
   height: 100vh;
 }
 
-h1{
-  font-family:'Rock 3D', cursive;
+h1 {
+  font-family: 'Rock 3D', cursive;
   font-size: 7rem;
-  color:  #FFFACD;
+  color: #fffacd;
 }
 
-h2, h3 {
+h2,
+h3 {
   font-family: 'Comfortaa', cursive;
-
 }
 
-.bg-primary, .btn-primary, .btn-outline-primary{
+.bg-primary,
+.btn-primary,
+.btn-outline-primary {
   background-color: #36344a !important;
 }
 
@@ -38,22 +41,25 @@ h2, h3 {
   color: #36344a !important;
 }
 .bg-secondary {
-  background-color: #FFFACD !important;
+  background-color: #fffacd !important;
 }
 
 .bg-success {
-  background-color: #430A6C !important;
+  background-color: #430a6c !important;
 }
 .text-secondary {
-  color: #FFFACD !important;
+  color: #fffacd !important;
 }
 
 /* buttons */
 .btn-outline-primary {
-  color:  #FFFACD;
+  color: #fffacd;
   background-color: transparent;
   background-image: none;
-  border-color:  #FFFACD
+  border-color: #fffacd;
 }
 
+.border-secondary {
+  border-color: #fffacd !important;
+}
 /*  new classes */
