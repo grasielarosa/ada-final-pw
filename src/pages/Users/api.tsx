@@ -1,9 +1,10 @@
+import { UsersTable } from '../../components';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
 
 const deleteUser = async (id: string) => {
-  await myApi.delete(`/user.json/${id}`);
+  await myApi.delete(`/users/${id}.json`);
 };
 
 const getUsersData = async (): Promise<User[]> => {
