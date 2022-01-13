@@ -15,22 +15,25 @@ import {
   Users,
   Welcome,
 } from './pages';
+import { AuthProvider } from './context/Auth';
 
 const App: FC = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/admin" component={Admin} />
-        <Route path="/detail" component={Detail} />
-        <Route path="/home" component={Home} />
-        <Route path="/movies" component={Movies} />
-        <Route path="/series" component={Series} />
-        <Route path="/users" component={Users} />
-        <Route path="/login" component={Login} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/" component={Welcome} />
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route path="/admin" component={Admin} />
+          <Route path="/detail" component={Detail} />
+          <Route path="/home" component={Home} />
+          <Route path="/movies" component={Movies} />
+          <Route path="/series" component={Series} />
+          <Route path="/users" component={Users} />
+          <Route path="/login" component={Login} />
+          <Route path="/sign-up" component={SignUp} />
+          <Route path="/" component={Welcome} />
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 };
 
