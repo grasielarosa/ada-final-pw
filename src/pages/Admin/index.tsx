@@ -21,9 +21,10 @@ const AdminPage: FC = () => {
     });
   };
 
-  // const handleButton = () => {
-  //   postDataMedia();
-  // };
+  const handleButton = () => {
+    console.log('oi');
+    // postDataMedia();
+  };
 
   return (
     <Wrapper hideFooter>

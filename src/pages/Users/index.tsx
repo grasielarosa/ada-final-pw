@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { Wrapper } from '../../components';
+import { Wrapper, UsersTable } from '../../components';
 import { withAuth } from '../../hoc';
 
 const UsersPage: FC = () => {
   return (
     <Wrapper>
-      <h1>users</h1>
+      <UsersTable />
     </Wrapper>
   );
 };
