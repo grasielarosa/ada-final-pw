@@ -1,3 +1,4 @@
+import { Data } from '../../types';
 import { theMovieApi, myApi } from '../../utils';
 
 const getDataMovies = async () => {
@@ -10,8 +11,8 @@ const getSearchMulti = async (search: string | number) => {
   return response.data.results;
 };
 
-const postDataMedia = async () => {
-  // await myApi.post('data-media');
+const postDataMedia = async (movie: Data): Promise<void> => {
+  await myApi.post('data-media.json', movie);
 };
 
 export { getDataMovies, getSearchMulti, postDataMedia };
