@@ -21,9 +21,8 @@ const AdminPage: FC = () => {
     });
   };
 
-  const handleButton = () => {
-    console.log('oi');
-    // postDataMedia();
+  const handleButton = (movie: Data) => {
+    postDataMedia(movie);
   };
 
   return (
