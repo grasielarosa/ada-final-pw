@@ -41,7 +41,7 @@ const AdminPage: FC = () => {
           </Label>
         </FormGroup>
       </Form>
-      <CardGroup api={data} handleButton={handleButton} />
+      <CardGroup items={data} handleButton={handleButton} />
     </Wrapper>
   );
 };
