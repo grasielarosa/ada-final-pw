@@ -1,8 +1,28 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+import { getDataMedia } from '../../api/myApi';
+import { CardGroup, Wrapper } from '../../components';
 import { withAuth } from '../../hoc';
+import { Data } from '../../types';
 
 const SeriesPage: FC = () => {
-  return <div>series</div>;
+  const [data, setData] = useState<Data[]>();
+
+  useEffect(() => {
+    getDataMedia().then((response) => {
+      const series = response.filter((obj) => obj.media_type === 'tv');
+      setData(series);
+    });
+  }, []);
+
+  const handleButton = () => {
+    console.log('oi');
+  };
+
+  return (
+    <Wrapper hideFooter>
+      <CardGroup handleButton={handleButton} items={data} />
+    </Wrapper>
+  );
 };
 
 export const Series = withAuth(SeriesPage);

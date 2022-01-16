@@ -16,11 +16,11 @@ import defaultImage from '../../../assets/images/image-not-found.jpeg';
 import { Data } from '../../../types';
 
 type Props = {
-  api?: Data[];
+  items?: Data[];
   handleButton: (movie: Data) => void;
 };
 
-const CardGroup: FC<Props> = ({ api, handleButton }) => {
+const CardGroup: FC<Props> = ({ items, handleButton }) => {
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -34,7 +34,7 @@ const CardGroup: FC<Props> = ({ api, handleButton }) => {
     align-items-stretch
     rounded"
     >
-      {api?.map((movie) => (
+      {items?.map((movie) => (
         <Col>
           <Card key={movie.id} className="bg-secondary text-primary h-100">
             <CardImg
@@ -45,7 +45,7 @@ const CardGroup: FC<Props> = ({ api, handleButton }) => {
               className="rounded"
             />
             <CardBody>
-              <CardTitle tag="h5">{movie.original_title}</CardTitle>
+              <CardTitle tag="h5">{movie.title}</CardTitle>
               <CardSubtitle className="mb-2 text-muted" tag="h6">
                 {movie.vote_average}
               </CardSubtitle>

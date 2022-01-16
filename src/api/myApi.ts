@@ -1,3 +1,4 @@
+import { mapToArray } from '../helpers';
 import { myApi } from '../utils';
 
 const getDataUsers = async () => {
@@ -5,4 +6,9 @@ const getDataUsers = async () => {
   return response.data;
 };
 
-export { getDataUsers };
+const getDataMedia = async () => {
+  const response = await myApi.get('data-media.json');
+  return mapToArray(response.data);
+};
+
+export { getDataMedia, getDataUsers };
