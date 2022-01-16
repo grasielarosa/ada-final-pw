@@ -7,7 +7,6 @@ import { getDataMovies, getSearchMulti, postDataMedia } from './api';
 
 const AdminPage: FC = () => {
   const [data, setData] = useState<Data[]>();
-  const [post, setPost] = useState<Data[]>();
 
   useEffect(() => {
     getDataMovies().then((response) => {
