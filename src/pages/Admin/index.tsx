@@ -7,7 +7,6 @@ import { getDataMovies, getSearchMulti, postDataMedia } from './api';
 
 const AdminPage: FC = () => {
   const [data, setData] = useState<Data[]>();
-  const [post, setPost] = useState<Data[]>();
 
   useEffect(() => {
     getDataMovies().then((response) => {
@@ -21,9 +20,8 @@ const AdminPage: FC = () => {
     });
   };
 
-  const handleButton = () => {
-    console.log('oi');
-    // postDataMedia();
+  const handleButton = (movie: Data) => {
+    postDataMedia(movie);
   };
 
   return (
@@ -43,7 +41,7 @@ const AdminPage: FC = () => {
           </Label>
         </FormGroup>
       </Form>
-      <CardGroup api={data} handleButton={handleButton} />
+      <CardGroup items={data} handleButton={handleButton} />
     </Wrapper>
   );
 };

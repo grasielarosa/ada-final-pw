@@ -1,8 +1,13 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-no-constructed-context-values */
+
 import React, {
   createContext,
   Dispatch,
   FC,
   SetStateAction,
+  useContext,
   useState,
 } from 'react';
 import { User } from '../../types';
@@ -20,11 +25,6 @@ const AuthContext = createContext<ContextType>({
 const AuthProvider: FC = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<Partial<User | undefined>>();
 
-  // se queremos revisar, por exemplo, un persmiso, ponemos una función antes de setear.
-  // const fx = (newValue: User) => {
-  //     if (currentUser?.role === 'admin') setCurrentUser(newValue)
-  // }
-
   return (
     <AuthContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
@@ -32,4 +32,10 @@ const AuthProvider: FC = ({ children }) => {
   );
 };
 
-export { AuthContext, AuthProvider };
+const useRole = () => {
+  const context = useContext(AuthContext);
+  const { currentUser, setCurrentUser } = context;
+  return { currentUser, setCurrentUser };
+};
+
+export { AuthContext, AuthProvider, useRole };

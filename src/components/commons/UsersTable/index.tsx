@@ -15,6 +15,10 @@ const UsersTable = () => {
       console.log(err);
     }
   };
+  const removeUser = async (id: string) => {
+    await deleteUser(id);
+    getUsers();
+  };
 
   if (!users) {
     getUsers();
@@ -41,7 +45,7 @@ const UsersTable = () => {
               <td>
                 <Button
                   onClick={() => {
-                    deleteUser(user.id);
+                    removeUser(user.id);
                   }}
                   className="btn-outline-primary"
                 >

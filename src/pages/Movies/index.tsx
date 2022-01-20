@@ -1,11 +1,26 @@
-import React, { FC } from 'react';
-import { Wrapper } from '../../components';
+import React, { FC, useEffect, useState } from 'react';
+import { getDataMedia } from '../../api/myApi';
+import { CardGroup, Wrapper } from '../../components';
 import { withAuth } from '../../hoc';
+import { Data } from '../../types';
 
 const MoviesPage: FC = () => {
+  const [data, setData] = useState<Data[]>();
+
+  useEffect(() => {
+    getDataMedia().then((response) => {
+      const movies = response.filter((obj) => obj.media_type !== 'tv');
+      setData(movies);
+    });
+  }, []);
+
+  const handleButton = () => {
+    console.log('oi');
+  };
+
   return (
     <Wrapper hideFooter>
-      <h1>movies</h1>
+      <CardGroup handleButton={handleButton} items={data} />
     </Wrapper>
   );
 };

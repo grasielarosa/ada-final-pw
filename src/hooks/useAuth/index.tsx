@@ -1,6 +1,8 @@
 /* eslint-disable no-use-before-define */
+
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRole } from '../../context/Auth';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
@@ -12,6 +14,8 @@ const useAuth = () => {
     localStorage.getItem('cinemada-token') || undefined
   );
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>();
+
+  // const { currentUser, setCurrentUser } = useRole();
 
   const { push } = useHistory();
 
@@ -76,6 +80,7 @@ const useAuth = () => {
 
       if (findUser) {
         setIsUserLoggedIn(true);
+        // setCurrentUser(findUser);
       } else {
         setIsUserLoggedIn(false);
       }
