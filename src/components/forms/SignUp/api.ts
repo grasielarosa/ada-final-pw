@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { User } from '../../../types';
 import { myApi } from '../../../utils';
 

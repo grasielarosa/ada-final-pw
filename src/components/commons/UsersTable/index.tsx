@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
 import { AiOutlineUserDelete } from 'react-icons/ai';
@@ -12,7 +13,7 @@ const UsersTable = () => {
       const response = await getUsersData();
       setUsers(response);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   const removeUser = async (id: string) => {

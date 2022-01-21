@@ -1,8 +1,8 @@
-import { UsersTable } from '../../components';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const deleteUser = async (id: string) => {
   await myApi.delete(`/users/${id}.json`);
 };

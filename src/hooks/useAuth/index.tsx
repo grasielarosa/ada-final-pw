@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useRole } from '../../context/Auth';
+// import { useRole } from '../../context/Auth';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
 
 // type Payload = Omit<User, 'id' | 'birthdate' | 'name'>;
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 const useAuth = () => {
   const [tokenStorage, setTokenStorage] = useState<string | undefined>(
     localStorage.getItem('cinemada-token') || undefined
@@ -56,7 +57,7 @@ const useAuth = () => {
 
         if (token) {
           setTokenStorage(token);
-          push('/home');
+          push(`/home/${findUser.id}`);
         }
       } else {
         throw new Error('el usuario no existe o la contraseña es erronea');
@@ -80,6 +81,7 @@ const useAuth = () => {
 
       if (findUser) {
         setIsUserLoggedIn(true);
+        push(`/home/${findUser.id}`);
         // setCurrentUser(findUser);
       } else {
         setIsUserLoggedIn(false);

@@ -15,6 +15,7 @@ const SeriesPage: FC = () => {
   }, []);
 
   const handleButton = () => {
+    // eslint-disable-next-line no-console
     console.log('oi');
   };
 
