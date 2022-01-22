@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,21 +15,15 @@ import {
   Users,
   Welcome,
 } from './pages';
-import { AuthContext, AuthProvider } from './context/Auth';
+import { AuthProvider } from './context/Auth';
 
 const App: FC = () => {
-  const { currentUser } = useContext(AuthContext);
-
   return (
     <AuthProvider>
       <Router>
         <Switch>
-          {currentUser?.role === 'admin' && (
-            <Route path="/admin" component={Admin} />
-          )}
-          {currentUser?.role === 'admin' && (
-            <Route path="/users" component={Users} />
-          )}
+          <Route path="/admin" component={Admin} />
+          <Route path="/users" component={Users} />
           <Route path="/home" component={Home} />
           <Route path="/movies" component={Movies} />
           <Route path="/series" component={Series} />
