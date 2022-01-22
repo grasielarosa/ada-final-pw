@@ -11,13 +11,14 @@ const HomePage = () => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    getUserDataMedia(currentUser).then((response) => {
-      setData(response);
-    });
-  }, []);
+    if (currentUser)
+      getUserDataMedia(currentUser).then((response) => {
+        setData(response);
+      });
+  }, [currentUser]);
 
   const handleButton = () => {
-    console.log('oi');
+    console.log('waiting');
   };
 
   return (
