@@ -23,11 +23,11 @@ const App: FC = () => {
       <Router>
         <Switch>
           <Route path="/admin" component={Admin} />
-          <Route path="/detail" component={Detail} />
+          <Route path="/users" component={Users} />
           <Route path="/home" component={Home} />
           <Route path="/movies" component={Movies} />
           <Route path="/series" component={Series} />
-          <Route path="/users" component={Users} />
+          <Route path="/detail" component={Detail} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/" component={Welcome} />

@@ -3,9 +3,9 @@ import { myApi } from '../../utils';
 
 const postUserDataMedia = async (
   currentUser: Partial<User | undefined>,
-  movie: Data
+  series: Data
 ): Promise<void> => {
-  await myApi.post(`users/${currentUser?.id}/data-media.json`, movie);
+  await myApi.post(`users/${currentUser?.id}/data-media.json`, series);
 };
 
 export { postUserDataMedia };

@@ -1,13 +1,12 @@
 /* eslint-disable no-use-before-define */
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useRole } from '../../context/Auth';
+import { AuthContext } from '../../context/Auth';
+// import { useRole } from '../../context/Auth';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
-
-// type Payload = Omit<User, 'id' | 'birthdate' | 'name'>;
 
 const useAuth = () => {
   const [tokenStorage, setTokenStorage] = useState<string | undefined>(
@@ -15,7 +14,7 @@ const useAuth = () => {
   );
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>();
 
-  // const { currentUser, setCurrentUser } = useRole();
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   const { push } = useHistory();
 
@@ -25,7 +24,7 @@ const useAuth = () => {
 
   useEffect(() => {
     loginWithToken();
-  });
+  }, []);
 
   const createUserToken = async (user: User): Promise<string | null> => {
     const newToken = Math.random().toString(36).substr(2);
@@ -80,7 +79,7 @@ const useAuth = () => {
 
       if (findUser) {
         setIsUserLoggedIn(true);
-        // setCurrentUser(findUser);
+        setCurrentUser(findUser);
       } else {
         setIsUserLoggedIn(false);
       }
@@ -92,6 +91,7 @@ const useAuth = () => {
   const logout = () => {
     localStorage.removeItem('cinemada-token');
     setIsUserLoggedIn(false);
+    setCurrentUser(undefined);
     push('/');
   };
 

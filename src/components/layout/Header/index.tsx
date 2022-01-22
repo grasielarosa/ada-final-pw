@@ -1,5 +1,5 @@
 /* eslint-disable react/no-this-in-sfc */
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import {
   Collapse,
   Nav,
@@ -9,10 +9,13 @@ import {
   NavbarToggler,
   NavItem,
 } from 'reactstrap';
+import { AuthContext } from '../../../context/Auth';
 
 import { useAuth } from '../../../hooks';
 
 const Header: FC = () => {
+  const { currentUser } = useContext(AuthContext);
+
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -40,16 +43,20 @@ const Header: FC = () => {
                 series
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink className="text-secondary" href="/users">
-                users
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="text-secondary" href="/admin">
-                admin
-              </NavLink>
-            </NavItem>
+            {currentUser?.role === 'admin' && (
+              <NavItem>
+                <NavLink className="text-secondary" href="/users">
+                  users
+                </NavLink>
+              </NavItem>
+            )}
+            {currentUser?.role === 'admin' && (
+              <NavItem>
+                <NavLink className="text-secondary" href="/admin">
+                  admin
+                </NavLink>
+              </NavItem>
+            )}
             <NavItem>
               <NavLink className="text-secondary" href="#" onClick={logout}>
                 logout

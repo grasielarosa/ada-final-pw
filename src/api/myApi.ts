@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { mapToArray } from '../helpers';
 import { myApi } from '../utils';
 
