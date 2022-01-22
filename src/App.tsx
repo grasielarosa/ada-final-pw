@@ -29,7 +29,7 @@ const App: FC = () => {
           <Route path="/users" component={Users} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
-          <Route path="/home/:id" component={Home} />
+          <Route path="/home" component={Home} />
           <Route path="/" component={Welcome} />
         </Switch>
       </Router>
