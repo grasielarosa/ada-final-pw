@@ -1,34 +1,29 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { Header } from '../../components';
-import { withAuth } from '../../hoc';
-import { User as UserType } from '../../types';
-import { getUser } from './api';
+import React, { useContext, useEffect, useState } from 'react';
 
-type ParamsType = {
-  id: string;
-};
+import { CardGroup, Wrapper } from '../../components';
+import { AuthContext } from '../../context/Auth';
+import { withAuth } from '../../hoc';
+import { Data } from '../../types';
+import { getUserDataMedia } from './api';
 
 const HomePage = () => {
-  const [currentUser, setCurrentUser] = useState<UserType>();
-  const { id } = useParams<ParamsType>();
+  const [data, setData] = useState<Data[]>();
+  const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    getUser(id).then((response) => {
-      setCurrentUser(response);
+    getUserDataMedia(currentUser).then((response) => {
+      setData(response);
     });
   }, []);
+
+  const handleButton = () => {
+    console.log('oi');
+  };
+
   return (
-    <>
-      <Header />
-      <h3 className="text-secondary">Welcome {id}</h3>
-      <ul className="text-secondary">
-        <li>{currentUser?.name}</li>
-        <li>{currentUser?.email}</li>
-        <li>{currentUser?.role}</li>
-      </ul>
-    </>
+    <Wrapper hideFooter>
+      <CardGroup handleButton={handleButton} items={data} />
+    </Wrapper>
   );
 };
 
