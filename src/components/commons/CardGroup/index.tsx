@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -35,29 +36,31 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
     rounded"
     >
       {items?.map((movie) => (
-        <Col>
-          <Card key={movie.id} className="bg-secondary text-primary h-100">
-            <CardImg
-              alt="teste"
-              src={cardImage(movie.poster_path)}
-              top
-              width="100%"
-              className="rounded"
-            />
-            <CardBody>
-              <CardTitle tag="h5">{movie.title}</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">
-                {movie.vote_average}
-              </CardSubtitle>
-              <CardText>{movie.popularity}</CardText>
-              <Button
-                onClick={() => handleButton(movie)}
-                className="align-self-end"
-              >
-                add
-              </Button>
-            </CardBody>
-          </Card>
+        <Col key={movie.id}>
+          <Link to={`/detail/${movie.id}`}>
+            <Card className="bg-secondary text-primary h-100">
+              <CardImg
+                alt="teste"
+                src={cardImage(movie.poster_path)}
+                top
+                width="100%"
+                className="rounded"
+              />
+              <CardBody>
+                <CardTitle tag="h5">{movie.title}</CardTitle>
+                <CardSubtitle className="mb-2 text-muted" tag="h6">
+                  {movie.vote_average}
+                </CardSubtitle>
+                <CardText>{movie.popularity}</CardText>
+                <Button
+                  onClick={() => handleButton(movie)}
+                  className="align-self-end"
+                >
+                  add
+                </Button>
+              </CardBody>
+            </Card>
+          </Link>
         </Col>
       ))}
     </Row>
