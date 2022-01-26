@@ -1,9 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Form, Input, FormGroup, Label } from 'reactstrap';
+import { getDataMedia } from '../../api/myApi';
 import { CardGroup, Wrapper } from '../../components';
 import { withAuth } from '../../hoc';
 import { Data } from '../../types';
-import { getDataMovies, getSearchMulti, postDataMedia } from './api';
+import {
+  deleteDataMedia,
+  getDataMovies,
+  getSearchMulti,
+  postDataMedia,
+} from './api';
 
 const AdminPage: FC = () => {
   const [data, setData] = useState<Data[]>();
@@ -20,8 +26,26 @@ const AdminPage: FC = () => {
     });
   };
 
+  const [dataIds, setDataIds] = useState<(number | undefined)[]>();
+
+  useEffect(() => {
+    if (data) {
+      getDataMedia().then((response) => {
+        setDataIds(response.map((item) => item.id));
+        console.log(dataIds);
+      });
+    }
+  }, [dataIds]);
+
   const handleButton = (movie: Data) => {
-    postDataMedia(movie);
+    if (!dataIds?.includes(movie.id)) {
+      postDataMedia(movie);
+      console.log('adicionou');
+    }
+    if (dataIds?.includes(movie.id)) {
+      deleteDataMedia(movie);
+      console.log('apagou');
+    }
   };
 
   return (
