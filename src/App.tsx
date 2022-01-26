@@ -27,7 +27,7 @@ const App: FC = () => {
           <Route path="/home" component={Home} />
           <Route path="/movies" component={Movies} />
           <Route path="/series" component={Series} />
-          <Route path="/detail" component={Detail} />
+          <Route path="/detail/:id" component={Detail} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
           <Route path="/" component={Welcome} />
