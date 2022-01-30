@@ -31,7 +31,6 @@ const AdminPage: FC = () => {
   useEffect(() => {
     getDataMedia().then((response) => {
       setDataIds(response.map((item) => item.id));
-      console.log(dataIds);
     });
   }, []);
 
@@ -41,14 +40,12 @@ const AdminPage: FC = () => {
       getDataMedia().then((response) => {
         setDataIds(response.map((item) => item.id));
       });
-      console.log('adicionou');
     }
     if (dataIds?.includes(movie.id)) {
       deleteDataMedia(movie);
       getDataMedia().then((response) => {
         setDataIds(response.map((item) => item.id));
       });
-      console.log('apagou');
     }
   };
 
