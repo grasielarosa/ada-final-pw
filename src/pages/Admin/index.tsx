@@ -29,21 +29,25 @@ const AdminPage: FC = () => {
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
 
   useEffect(() => {
-    if (data) {
-      getDataMedia().then((response) => {
-        setDataIds(response.map((item) => item.id));
-        console.log(dataIds);
-      });
-    }
-  }, [dataIds]);
+    getDataMedia().then((response) => {
+      setDataIds(response.map((item) => item.id));
+      console.log(dataIds);
+    });
+  }, []);
 
   const handleButton = (movie: Data) => {
     if (!dataIds?.includes(movie.id)) {
       postDataMedia(movie);
+      getDataMedia().then((response) => {
+        setDataIds(response.map((item) => item.id));
+      });
       console.log('adicionou');
     }
     if (dataIds?.includes(movie.id)) {
       deleteDataMedia(movie);
+      getDataMedia().then((response) => {
+        setDataIds(response.map((item) => item.id));
+      });
       console.log('apagou');
     }
   };
