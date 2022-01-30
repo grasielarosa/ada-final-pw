@@ -61,7 +61,7 @@ const AdminPage: FC = () => {
             onChange={handleChange}
           />
           <Label for="search" className="ps-4">
-            search
+            teste
           </Label>
         </FormGroup>
       </Form>
