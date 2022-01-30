@@ -4,7 +4,11 @@ import { CardGroup, Wrapper } from '../../components';
 import { AuthContext } from '../../context/Auth';
 import { withAuth } from '../../hoc';
 import { Data } from '../../types';
-import { postUserDataMedia } from './api';
+import {
+  deleteUserDataMedia,
+  getUserDataMedia,
+  postUserDataMedia,
+} from './api';
 
 const SeriesPage: FC = () => {
   const [data, setData] = useState<Data[]>();
@@ -17,8 +21,27 @@ const SeriesPage: FC = () => {
     });
   }, []);
 
-  const handleButton = (series: Data) => {
-    postUserDataMedia(currentUser, series);
+  const [dataIds, setDataIds] = useState<(number | undefined)[]>();
+
+  useEffect(() => {
+    getUserDataMedia(currentUser).then((response) => {
+      setDataIds(response.map((item) => item.id));
+    });
+  }, []);
+
+  const handleButton = (movie: Data) => {
+    if (!dataIds?.includes(movie.id)) {
+      postUserDataMedia(currentUser, movie);
+      getUserDataMedia(currentUser).then((response) => {
+        setDataIds(response.map((item) => item.id));
+      });
+    }
+    if (dataIds?.includes(movie.id)) {
+      deleteUserDataMedia(currentUser, movie);
+      getUserDataMedia(currentUser).then((response) => {
+        setDataIds(response.map((item) => item.id));
+      });
+    }
   };
 
   return (

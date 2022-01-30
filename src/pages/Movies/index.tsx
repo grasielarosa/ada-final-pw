@@ -4,9 +4,13 @@ import { CardGroup, Wrapper } from '../../components';
 import { AuthContext } from '../../context/Auth';
 import { withAuth } from '../../hoc';
 import { Data } from '../../types';
-import { postUserDataMedia } from './api';
+import {
+  deleteUserDataMedia,
+  getUserDataMedia,
+  postUserDataMedia,
+} from './api';
 
-const MoviesPage: FC = () => {
+const MoviesPage = () => {
   const [data, setData] = useState<Data[]>();
   const { currentUser } = useContext(AuthContext);
 
@@ -17,8 +21,27 @@ const MoviesPage: FC = () => {
     });
   }, []);
 
+  const [dataIds, setDataIds] = useState<(number | undefined)[]>();
+
+  useEffect(() => {
+    getUserDataMedia(currentUser).then((response) => {
+      setDataIds(response.map((item) => item.id));
+    });
+  }, []);
+
   const handleButton = (movie: Data) => {
-    postUserDataMedia(currentUser, movie);
+    if (!dataIds?.includes(movie.id)) {
+      postUserDataMedia(currentUser, movie);
+      getUserDataMedia(currentUser).then((response) => {
+        setDataIds(response.map((item) => item.id));
+      });
+    }
+    if (dataIds?.includes(movie.id)) {
+      deleteUserDataMedia(currentUser, movie);
+      getUserDataMedia(currentUser).then((response) => {
+        setDataIds(response.map((item) => item.id));
+      });
+    }
   };
   return (
     <Wrapper hideFooter>

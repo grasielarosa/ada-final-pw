@@ -6,6 +6,7 @@ export const mapToArray = (object: any) => {
     array.push({
       id: elem,
       ...object[elem],
+      idDB: elem,
     });
   }
   return array;
