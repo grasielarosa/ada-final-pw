@@ -27,3 +27,15 @@ export type Data = {
   vote_average?: number;
   media_type?: string;
 };
+
+export type ApiResponse = {
+  page: number;
+  results: Data[];
+  total_pages: number;
+  total_results: number;
+};
+
+export type Params = {
+  page: number;
+  search?: number | string;
+};
