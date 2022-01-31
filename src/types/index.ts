@@ -37,5 +37,5 @@ export type ApiResponse = {
 
 export type Params = {
   page: number;
-  search: string | undefined;
+  search?: number | string;
 };
