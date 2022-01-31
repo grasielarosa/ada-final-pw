@@ -1,11 +1,13 @@
-import { ApiResponse, Params } from '../types';
+import { FC } from 'react';
+import { ApiResponse } from '../types';
 import { theMovieApi } from '../utils';
 
-const getDataMovies = async ({
-  page,
-  search,
-}: Params): Promise<ApiResponse> => {
+const getDataMovies = async (
+  page: number,
+  search?: string
+): Promise<ApiResponse> => {
   let response;
+
   if (search) {
     response = await theMovieApi.get<ApiResponse>(
       `/search/multi?query=${search}&page=${page}`

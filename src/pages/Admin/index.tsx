@@ -3,28 +3,12 @@ import { Form, Input, FormGroup, Label } from 'reactstrap';
 import { getDataMedia } from '../../api/myApi';
 import { CardGroup, Wrapper } from '../../components';
 import { withAuth } from '../../hoc';
+import { useData } from '../../hooks/useData';
 import { Data } from '../../types';
-import {
-  deleteDataMedia,
-  getDataMovies,
-  getSearchMulti,
-  postDataMedia,
-} from './api';
+import { deleteDataMedia, postDataMedia } from './api';
 
 const AdminPage: FC = () => {
-  const [data, setData] = useState<Data[]>();
-
-  useEffect(() => {
-    getDataMovies().then((response) => {
-      setData(response);
-    });
-  }, []);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    getSearchMulti(e.target.value).then((response) => {
-      setData(response);
-    });
-  };
+  const { data, handleChange } = useData();
 
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
 
