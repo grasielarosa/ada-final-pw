@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Form, Input, FormGroup, Label } from 'reactstrap';
-import { CardGroup, Wrapper } from '../../components';
+import { CardGroup, Pagination, Wrapper } from '../../components';
 import { withAuth } from '../../hoc';
 import { useData } from '../../hooks/useData';
 
@@ -25,6 +25,7 @@ const AdminPage: FC = () => {
         </FormGroup>
       </Form>
       <CardGroup items={data} handleButton={handleButton} />
+      <Pagination />
     </Wrapper>
   );
 };
