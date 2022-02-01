@@ -1,25 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-
+import React from 'react';
 import { CardGroup, Wrapper } from '../../components';
-import { AuthContext } from '../../context/Auth';
 import { withAuth } from '../../hoc';
-import { Data } from '../../types';
-import { getUserDataMedia } from './api';
+import { useUsers } from '../../hooks/useUsers';
 
 const HomePage = () => {
-  const [data, setData] = useState<Data[]>();
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    if (currentUser)
-      getUserDataMedia(currentUser).then((response) => {
-        setData(response);
-      });
-  }, [currentUser]);
-
-  const handleButton = () => {
-    console.log('waiting');
-  };
+  const { data, handleButton } = useUsers();
 
   return (
     <Wrapper hideFooter>

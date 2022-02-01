@@ -1,48 +1,10 @@
-import React, { FC, useContext, useEffect, useState } from 'react';
-import { getDataMedia } from '../../api/myApi';
+import React from 'react';
 import { CardGroup, Wrapper } from '../../components';
-import { AuthContext } from '../../context/Auth';
 import { withAuth } from '../../hoc';
-import { Data } from '../../types';
-import {
-  deleteUserDataMedia,
-  getUserDataMedia,
-  postUserDataMedia,
-} from './api';
+import { useUsers } from '../../hooks/useUsers';
 
 const MoviesPage = () => {
-  const [data, setData] = useState<Data[]>();
-  const { currentUser } = useContext(AuthContext);
-
-  useEffect(() => {
-    getDataMedia().then((response) => {
-      const movies = response.filter((obj) => obj.media_type !== 'tv');
-      setData(movies);
-    });
-  }, []);
-
-  const [dataIds, setDataIds] = useState<(number | undefined)[]>();
-
-  useEffect(() => {
-    getUserDataMedia(currentUser).then((response) => {
-      setDataIds(response.map((item) => item.id));
-    });
-  }, []);
-
-  const handleButton = (movie: Data) => {
-    if (!dataIds?.includes(movie.id)) {
-      postUserDataMedia(currentUser, movie);
-      getUserDataMedia(currentUser).then((response) => {
-        setDataIds(response.map((item) => item.id));
-      });
-    }
-    if (dataIds?.includes(movie.id)) {
-      deleteUserDataMedia(currentUser, movie);
-      getUserDataMedia(currentUser).then((response) => {
-        setDataIds(response.map((item) => item.id));
-      });
-    }
-  };
+  const { data, handleButton } = useUsers();
   return (
     <Wrapper hideFooter>
       <CardGroup handleButton={handleButton} items={data} />
