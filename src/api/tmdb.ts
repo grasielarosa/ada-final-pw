@@ -1,4 +1,3 @@
-import { FC } from 'react';
 import { ApiResponse } from '../types';
 import { theMovieApi } from '../utils';
 
