@@ -1,10 +1,12 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import {
   Button,
   Card,
   CardBody,
+  CardFooter,
   CardImg,
   CardSubtitle,
   CardText,
@@ -14,6 +16,8 @@ import {
 } from 'reactstrap';
 
 import defaultImage from '../../../assets/images/image-not-found.jpeg';
+import { useData } from '../../../hooks/useData';
+import { useUsers } from '../../../hooks/useUsers';
 import { Data } from '../../../types';
 
 type Props = {
@@ -22,6 +26,8 @@ type Props = {
 };
 
 const CardGroup: FC<Props> = ({ items, handleButton }) => {
+  const { isOnMyApi } = useData();
+  const { currentUser } = useUsers();
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -37,8 +43,8 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
     >
       {items?.map((movie) => (
         <Col key={movie.id}>
-          <Link to={`/detail/${movie.id}`} className="text-decoration-none">
-            <Card className="bg-secondary text-primary h-100">
+          <Card className="bg-secondary text-primary h-100">
+            <Link to={`/detail/${movie.id}`} className="text-decoration-none">
               <CardImg
                 alt={`${movie.title || movie.name} movie poster`}
                 src={cardImage(movie.poster_path)}
@@ -52,15 +58,43 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   {movie.vote_average}
                 </CardSubtitle>
                 <CardText>{movie.popularity}</CardText>
+              </CardBody>
+            </Link>
+            <CardFooter className="border-top-0 bg-transparent">
+              {isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-self-end"
                 >
                   add
                 </Button>
-              </CardBody>
-            </Card>
-          </Link>
+              )}
+              {!isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
+                <Button
+                  onClick={() => handleButton(movie)}
+                  className="align-self-end"
+                >
+                  remove
+                </Button>
+              )}
+              {isOnMyApi(movie.id) && currentUser?.role !== 'admin' && (
+                <Button
+                  onClick={() => handleButton(movie)}
+                  className="align-self-end"
+                >
+                  <AiOutlineEyeInvisible />
+                </Button>
+              )}
+              {!isOnMyApi(movie.id) && currentUser?.role !== 'admin' && (
+                <Button
+                  onClick={() => handleButton(movie)}
+                  className="align-self-end"
+                >
+                  <AiOutlineEye />
+                </Button>
+              )}
+            </CardFooter>
+          </Card>
         </Col>
       ))}
     </Row>

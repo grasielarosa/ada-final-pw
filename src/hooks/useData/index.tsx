@@ -35,6 +35,14 @@ const useData = () => {
     setSearch(inputValue);
   };
 
+  // eslint-disable-next-line consistent-return
+  const isOnMyApi = (id: number) => {
+    const isOnDB = dataIds?.find((items) => items === id);
+    if (isOnDB) {
+      return true;
+    }
+  };
+
   useEffect(() => {
     getDataMedia().then((response) => {
       setDataIds(response.map((item) => item.id));
@@ -61,6 +69,8 @@ const useData = () => {
     handleChange,
     handlePages,
     data,
+    dataIds,
+    isOnMyApi,
     page,
     totalPages,
     setPage,

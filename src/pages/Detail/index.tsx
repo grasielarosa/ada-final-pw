@@ -43,11 +43,11 @@ const DetailPage: FC = () => {
     });
   }, [data]);
 
-  useEffect(() => {
-    getSeries(Number(id)).then((response) => {
-      setVideos(response);
-    });
-  }, [data]);
+  // useEffect(() => {
+  //   getSeries(Number(id)).then((response) => {
+  //     setVideos(response);
+  //   });
+  // }, [data]);
 
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
