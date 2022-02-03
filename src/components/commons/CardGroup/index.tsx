@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import {
   Button,
@@ -16,6 +17,7 @@ import {
 
 import defaultImage from '../../../assets/images/image-not-found.jpeg';
 import { useData } from '../../../hooks/useData';
+import { useUsers } from '../../../hooks/useUsers';
 import { Data } from '../../../types';
 
 type Props = {
@@ -25,6 +27,7 @@ type Props = {
 
 const CardGroup: FC<Props> = ({ items, handleButton }) => {
   const { isOnMyApi } = useData();
+  const { currentUser } = useUsers();
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -58,7 +61,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
               </CardBody>
             </Link>
             <CardFooter className="border-top-0 bg-transparent">
-              {isOnMyApi(movie.id) && (
+              {isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-self-end"
@@ -66,12 +69,28 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   add
                 </Button>
               )}
-              {!isOnMyApi(movie.id) && (
+              {!isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-self-end"
                 >
                   remove
+                </Button>
+              )}
+              {isOnMyApi(movie.id) && currentUser?.role !== 'admin' && (
+                <Button
+                  onClick={() => handleButton(movie)}
+                  className="align-self-end"
+                >
+                  <AiOutlineEyeInvisible />
+                </Button>
+              )}
+              {!isOnMyApi(movie.id) && currentUser?.role !== 'admin' && (
+                <Button
+                  onClick={() => handleButton(movie)}
+                  className="align-self-end"
+                >
+                  <AiOutlineEye />
                 </Button>
               )}
             </CardFooter>

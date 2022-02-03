@@ -54,7 +54,7 @@ const useUsers = () => {
       });
     }
   };
-  return { data, setData, handleButton };
+  return { currentUser, data, setData, handleButton };
 };
 
 export { useUsers };
