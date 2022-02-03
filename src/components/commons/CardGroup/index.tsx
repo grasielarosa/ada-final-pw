@@ -57,7 +57,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                 <CardText>{movie.popularity}</CardText>
               </CardBody>
             </Link>
-            <CardFooter>
+            <CardFooter className="border-top-0 bg-transparent">
               {isOnMyApi(movie.id) && (
                 <Button
                   onClick={() => handleButton(movie)}
