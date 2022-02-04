@@ -19,6 +19,7 @@ import defaultImage from '../../../assets/images/image-not-found.jpeg';
 import { useData } from '../../../hooks/useData';
 import { useUsers } from '../../../hooks/useUsers';
 import { Data } from '../../../types';
+import { Rating } from '../Rating';
 
 type Props = {
   items?: Data[];
@@ -43,8 +44,11 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
     >
       {items?.map((movie) => (
         <Col key={movie.id}>
-          <Card className="bg-secondary text-primary h-100">
-            <Link to={`/detail/${movie.id}`} className="text-decoration-none">
+          <Card className="bg-secondary h-100 justify-content-between">
+            <Link
+              to={`/detail/${movie.id}`}
+              className="text-decoration-none text-primary"
+            >
               <CardImg
                 alt={`${movie.title || movie.name} movie poster`}
                 src={cardImage(movie.poster_path)}
@@ -54,10 +58,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
               />
               <CardBody>
                 <CardTitle tag="h5">{movie.title || movie.name}</CardTitle>
-                <CardSubtitle className="mb-2 text-muted" tag="h6">
-                  {movie.vote_average}
-                </CardSubtitle>
-                <CardText>{movie.popularity}</CardText>
+                <Rating rating={movie.vote_average} />
               </CardBody>
             </Link>
             <CardFooter className="border-top-0 bg-transparent">
