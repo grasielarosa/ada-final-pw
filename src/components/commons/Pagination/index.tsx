@@ -1,36 +1,32 @@
-import React, { useState } from 'react';
-import {
-  Pagination as PaginationComponent,
-  PaginationItem,
-  PaginationLink,
-} from 'reactstrap';
-import { useData } from '../../../hooks/useData';
+import React, { FC } from 'react';
+import ReactPaginate from 'react-paginate';
 
-const Pagination = () => {
-  const { handlePages, page, totalPages } = useData();
+type Props = {
+  pageCount: number;
+  handlePageClick: (page: any) => void;
+};
 
-  // const [limit, setLimit] = useState(7);
-
+const Pagination: FC<Props> = ({ pageCount, handlePageClick }): JSX.Element => {
+  console.log(pageCount);
   return (
-    <div className="d-flex justify-content-center my-4">
-      <PaginationComponent aria-label="Page navigation">
-        <PaginationItem disabled>
-          <PaginationLink onClick={() => handlePages(1)} first />
-        </PaginationItem>
-        <PaginationItem disabled>
-          <PaginationLink onClick={() => handlePages(page - 1)} previous />
-        </PaginationItem>
-        {/* {items.} */}
-        <PaginationItem active>
-          <PaginationLink>1</PaginationLink>
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink onClick={() => handlePages(page + 1)} next />
-        </PaginationItem>
-        <PaginationItem>
-          <PaginationLink onClick={() => handlePages(totalPages)} last />
-        </PaginationItem>
-      </PaginationComponent>
+    <div className=" my-4">
+      <ReactPaginate
+        previousLabel="< previous"
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        containerClassName="pagination justify-content-center"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+      />
     </div>
   );
 };

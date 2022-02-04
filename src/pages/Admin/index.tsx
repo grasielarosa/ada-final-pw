@@ -5,7 +5,8 @@ import { withAuth } from '../../hoc';
 import { useData } from '../../hooks/useData';
 
 const AdminPage: FC = () => {
-  const { data, handleChange, handleButton } = useData();
+  const { data, handleChange, handleButton, handlePageClick, totalPages } =
+    useData();
 
   return (
     <Wrapper hideFooter>
@@ -25,7 +26,7 @@ const AdminPage: FC = () => {
         </FormGroup>
       </Form>
       <CardGroup items={data} handleButton={handleButton} />
-      <Pagination />
+      <Pagination pageCount={totalPages} handlePageClick={handlePageClick} />
     </Wrapper>
   );
 };
