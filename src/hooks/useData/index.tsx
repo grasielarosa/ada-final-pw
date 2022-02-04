@@ -22,19 +22,20 @@ const useData = () => {
   useEffect(() => {
     getDataMovies(page, search).then((response) => {
       setTotalPages(response.total_pages);
+      console.log(response.total_pages);
     });
   }, [page, search]);
-
-  const handlePages = (value: number) => {
-    const currentPage = value;
-    setPage(currentPage);
-  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     setSearch(inputValue);
   };
 
+  const handlePageClick = (paginate: any) => {
+    // eslint-disable-next-line prefer-const
+    let currentPage = paginate.selected + 1;
+    setPage(currentPage);
+  };
   // eslint-disable-next-line consistent-return
   const isOnMyApi = (id: number) => {
     const isOnDB = dataIds?.find((items) => items === id);
@@ -67,7 +68,7 @@ const useData = () => {
   return {
     handleButton,
     handleChange,
-    handlePages,
+    handlePageClick,
     data,
     dataIds,
     isOnMyApi,
