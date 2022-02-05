@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { deleteDataMedia, getDataMedia, postDataMedia } from '../../api/myApi';
-import { getDataMovies } from '../../api/tmdb';
+import { deleteDataMedia, getDataFB, postDataMedia } from '../../api/myApi';
+import { getDataTMDB } from '../../api/tmdb';
 import { Data } from '../../types';
 
 const useData = () => {
@@ -9,18 +9,18 @@ const useData = () => {
   const [page, setPage] = useState<number>(1);
   // const page = Number(new URLSearchParams(params).get('page')) || 1;
   const [search, setSearch] = useState('');
-  const [data, setData] = useState<Data[]>();
+  const [dataTMDB, setDataTMDB] = useState<Data[]>();
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
   const [totalPages, setTotalPages] = useState<number>(1);
 
   useEffect(() => {
-    getDataMovies(page, search).then((response) => {
-      setData(response.results);
+    getDataTMDB(page, search).then((response) => {
+      setDataTMDB(response.results);
     });
   }, [page, search]);
 
   useEffect(() => {
-    getDataMovies(page, search).then((response) => {
+    getDataTMDB(page, search).then((response) => {
       setTotalPages(response.total_pages);
     });
   }, [page, search]);
@@ -44,7 +44,7 @@ const useData = () => {
   };
 
   useEffect(() => {
-    getDataMedia().then((response) => {
+    getDataFB().then((response) => {
       setDataIds(response.map((item) => item.id));
     });
   }, []);
@@ -52,13 +52,13 @@ const useData = () => {
   const handleButton = (movie: Data) => {
     if (!dataIds?.includes(movie.id)) {
       postDataMedia(movie);
-      getDataMedia().then((response) => {
+      getDataFB().then((response) => {
         setDataIds(response.map((item) => item.id));
       });
     }
     if (dataIds?.includes(movie.id)) {
       deleteDataMedia(movie);
-      getDataMedia().then((response) => {
+      getDataFB().then((response) => {
         setDataIds(response.map((item) => item.id));
       });
     }
@@ -68,7 +68,7 @@ const useData = () => {
     handleButton,
     handleChange,
     handlePageClick,
-    data,
+    dataTMDB,
     dataIds,
     isOnMyApi,
     page,

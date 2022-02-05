@@ -6,7 +6,7 @@ import { useData } from '../../hooks/useData';
 
 const AdminPage: FC = () => {
   const {
-    data,
+    dataTMDB,
     handleChange,
     handleButton,
     handlePageClick,
@@ -14,7 +14,6 @@ const AdminPage: FC = () => {
     dataIds,
   } = useData();
 
-  console.log(dataIds);
   return (
     <Wrapper hideFooter>
       <Form action="">
@@ -32,7 +31,7 @@ const AdminPage: FC = () => {
           </Label>
         </FormGroup>
       </Form>
-      <CardGroup items={data} handleButton={handleButton} />
+      <CardGroup items={dataTMDB} handleButton={handleButton} />
       <Pagination pageCount={totalPages} handlePageClick={handlePageClick} />
     </Wrapper>
   );

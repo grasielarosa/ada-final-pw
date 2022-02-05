@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {
   deleteUserDataMedia,
   deleteWatched,
-  getDataMedia,
+  getDataFB,
   getWatched,
   getUserDataMedia,
   postUserDataMedia,
@@ -23,7 +23,7 @@ const useUsers = () => {
 
   // data
   useEffect(() => {
-    getDataMedia().then((response) => {
+    getDataFB().then((response) => {
       if (location.pathname.includes('/movie')) {
         const movies = response.filter((obj) => obj.media_type !== 'tv');
         setData(movies);
