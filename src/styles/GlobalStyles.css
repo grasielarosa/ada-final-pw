@@ -11,7 +11,7 @@
 body {
   font-family: 'Outfit', sans-serif;
   color: #36344a;
-  background: linear-gradient(to top, #2b283d, #1b1a27);
+  background: #1b1a27;
 }
 
 html,
@@ -32,8 +32,7 @@ h3 {
 }
 
 .bg-primary,
-.btn-primary,
-.btn-outline-primary {
+.btn-primary {
   background-color: #36344a !important;
 }
 

@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Pagination: FC<Props> = ({ pageCount, handlePageClick }): JSX.Element => {
-  console.log(pageCount);
   return (
     <div className=" my-4">
       <ReactPaginate

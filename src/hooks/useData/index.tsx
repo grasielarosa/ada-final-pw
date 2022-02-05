@@ -22,7 +22,6 @@ const useData = () => {
   useEffect(() => {
     getDataMovies(page, search).then((response) => {
       setTotalPages(response.total_pages);
-      console.log(response.total_pages);
     });
   }, [page, search]);
 

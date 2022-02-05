@@ -37,11 +37,11 @@ const DetailPage: FC = () => {
     });
   }, []);
 
-  useEffect(() => {
-    getVideos(Number(id)).then((response) => {
-      setVideos(response);
-    });
-  }, [data]);
+  // useEffect(() => {
+  //   getVideos(Number(id)).then((response) => {
+  //     setVideos(response);
+  //   });
+  // }, [data]);
 
   // useEffect(() => {
   //   getSeries(Number(id)).then((response) => {
@@ -55,8 +55,8 @@ const DetailPage: FC = () => {
   return (
     <Wrapper>
       <Col lg="11" className="mx-auto">
-        <div>
-          <Button outline onClick={goBack} className="my-3">
+        <div className="d-grid">
+          <Button onClick={goBack} className="btn-outline-primary my-3">
             <RiArrowGoBackLine />
           </Button>
         </div>

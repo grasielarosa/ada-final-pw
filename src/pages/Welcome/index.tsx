@@ -13,8 +13,7 @@ const WelcomePage: FC = () => {
           <Card className="bg-transparent text-center text-secondary h-100 justify-content-center">
             <CardText>welcome to</CardText>
             <h1>CinemAda</h1>
-            {/* <CardTitle tag="h1">CinemAda</CardTitle> */}
-            <div>
+            <div className="d-block">
               <Button outline className="btn-outline-primary">
                 <Link
                   to="/login"
