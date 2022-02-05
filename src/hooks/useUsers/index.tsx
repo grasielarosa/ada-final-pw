@@ -3,9 +3,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   deleteUserDataMedia,
+  deleteWatched,
   getDataMedia,
+  getWatched,
   getUserDataMedia,
   postUserDataMedia,
+  postWatched,
 } from '../../api/myApi';
 import { AuthContext } from '../../context/Auth';
 import { Data } from '../../types';
@@ -15,7 +18,10 @@ const useUsers = () => {
   const [data, setData] = useState<Data[]>();
   const { currentUser } = useContext(AuthContext);
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
+  const [watched, setWatched] = useState<Data[]>();
+  const [watchedIds, setWatchedIds] = useState<(number | undefined)[]>();
 
+  // data
   useEffect(() => {
     getDataMedia().then((response) => {
       if (location.pathname.includes('/movie')) {
@@ -29,6 +35,7 @@ const useUsers = () => {
       if (location.pathname.includes('/home')) {
         getUserDataMedia(currentUser).then((response) => {
           setData(response);
+          console.log(response);
         });
       }
     });
@@ -54,7 +61,36 @@ const useUsers = () => {
       });
     }
   };
-  return { currentUser, data, setData, handleButton };
+
+  useEffect(() => {
+    getWatched(currentUser).then((response) => {
+      setWatchedIds(response.map((item) => item.id));
+    });
+  }, []);
+
+  const handleButtonWatch = (movie: Data) => {
+    if (!watchedIds?.includes(movie.id)) {
+      postWatched(currentUser, movie);
+      getWatched(currentUser).then((response) => {
+        setWatched(response.map((item) => item.id));
+      });
+    }
+    if (watchedIds?.includes(movie.id)) {
+      deleteWatched(currentUser, movie);
+      getWatched(currentUser).then((response) => {
+        setWatched(response.map((item) => item.id));
+      });
+    }
+  };
+  return {
+    currentUser,
+    data,
+    dataIds,
+    setData,
+    handleButton,
+    handleButtonWatch,
+    watched,
+  };
 };
 
 export { useUsers };

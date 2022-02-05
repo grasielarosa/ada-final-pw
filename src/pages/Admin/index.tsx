@@ -5,9 +5,16 @@ import { withAuth } from '../../hoc';
 import { useData } from '../../hooks/useData';
 
 const AdminPage: FC = () => {
-  const { data, handleChange, handleButton, handlePageClick, totalPages } =
-    useData();
+  const {
+    data,
+    handleChange,
+    handleButton,
+    handlePageClick,
+    totalPages,
+    dataIds,
+  } = useData();
 
+  console.log(dataIds);
   return (
     <Wrapper hideFooter>
       <Form action="">
