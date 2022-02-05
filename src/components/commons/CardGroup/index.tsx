@@ -61,7 +61,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                 <Rating rating={movie.vote_average} />
               </CardBody>
             </Link>
-            <CardFooter className="border-top-0 bg-transparent d-grid">
+            {/* <CardFooter className="border-top-0 bg-transparent d-grid">
               {!isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
@@ -94,7 +94,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   <AiOutlineEye />
                 </Button>
               )}
-            </CardFooter>
+            </CardFooter> */}
           </Card>
         </Col>
       ))}

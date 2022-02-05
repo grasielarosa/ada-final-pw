@@ -5,7 +5,7 @@ import { myApi } from '../utils';
 
 // selección data
 
-const getDataMedia = async () => {
+const getDataFB = async () => {
   const response = await myApi.get('data-media.json');
   return mapToArray(response.data);
 };
@@ -15,7 +15,7 @@ const postDataMedia = async (movie: Data): Promise<void> => {
 };
 
 const deleteDataMedia = async (movie: Data): Promise<void> => {
-  const data = await getDataMedia();
+  const data = await getDataFB();
   const deleteData = data.find((item) => item.id === movie.id);
   await myApi.delete(`data-media/${deleteData.idDB}.json`);
 };
@@ -84,7 +84,7 @@ export {
   deleteUserDataMedia,
   deleteWatched,
   getDataUsers,
-  getDataMedia,
+  getDataFB,
   getWatched,
   getUserDataMedia,
   postDataMedia,

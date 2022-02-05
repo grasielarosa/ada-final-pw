@@ -1,7 +1,7 @@
 import { ApiResponse } from '../types';
 import { theMovieApi } from '../utils';
 
-const getDataMovies = async (
+const getDataTMDB = async (
   page: number,
   search?: string
 ): Promise<ApiResponse> => {
@@ -19,4 +19,4 @@ const getDataMovies = async (
   return response.data;
 };
 
-export { getDataMovies };
+export { getDataTMDB };
