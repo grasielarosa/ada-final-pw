@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -26,8 +26,7 @@ type Props = {
 
 const CardGroup: FC<Props> = ({ items, handleButton }) => {
   const { isOnMyApi } = useData();
-  const { location } = useHistory();
-  const { currentUser } = useUsers();
+  const { currentUser, isOnMyApiUser } = useUsers();
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -61,7 +60,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                 <Rating rating={movie.vote_average} />
               </CardBody>
             </Link>
-            {/* <CardFooter className="border-top-0 bg-transparent d-grid">
+            <CardFooter className="border-top-0 bg-transparent d-grid">
               {!isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
@@ -78,7 +77,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   remove
                 </Button>
               )}
-              {isOnMyApi(movie.id) && currentUser?.role !== 'admin' && (
+              {isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-text-center fs-3 bg-primary text-secondary"
@@ -86,7 +85,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   <AiOutlineEyeInvisible />
                 </Button>
               )}
-              {!isOnMyApi(movie.id) && currentUser?.role !== 'admin' && (
+              {!isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-text-center fs-3 bg-primary text-secondary"
@@ -94,7 +93,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   <AiOutlineEye />
                 </Button>
               )}
-            </CardFooter> */}
+            </CardFooter>
           </Card>
         </Col>
       ))}
