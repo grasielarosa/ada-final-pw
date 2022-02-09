@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { deleteDataMedia, getDataFB, postDataMedia } from '../../api/myApi';
 import { getDataTMDB } from '../../api/tmdb';
 import { Data } from '../../types';
 
 const useData = () => {
-  // const params = useLocation().search;
   const [page, setPage] = useState<number>(1);
-  // const page = Number(new URLSearchParams(params).get('page')) || 1;
   const [search, setSearch] = useState('');
   const [dataTMDB, setDataTMDB] = useState<Data[]>();
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
@@ -47,7 +44,7 @@ const useData = () => {
     getDataFB().then((response) => {
       setDataIds(response.map((item) => item.id));
     });
-  }, []);
+  }, [dataIds]);
 
   const handleButton = (movie: Data) => {
     if (!dataIds?.includes(movie.id)) {

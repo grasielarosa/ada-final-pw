@@ -5,10 +5,11 @@ import { useUsers } from '../../hooks/useUsers';
 
 const SeriesPage: FC = () => {
   const { data, handleButton } = useUsers();
+  const res = data?.filter((item) => item.media_type === 'tv');
 
   return (
     <Wrapper hideFooter>
-      <CardGroup handleButton={handleButton} items={data} />
+      <CardGroup items={res} handleButton={handleButton} />
     </Wrapper>
   );
 };
