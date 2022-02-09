@@ -52,42 +52,12 @@ const deleteUserDataMedia = async (
   );
 };
 
-// selección watch
-
-const postWatched = async (
-  currentUser: Partial<User | undefined>,
-  movie: Data
-): Promise<void> => {
-  await myApi.post(`users/${currentUser?.id}/data-media/watched.json`, movie);
-};
-
-const getWatched = async (currentUser: Partial<User | undefined>) => {
-  const response = await myApi.get(
-    `users/${currentUser?.id}/data-media/watched.json`
-  );
-  return mapToArray(response.data);
-};
-
-const deleteWatched = async (
-  currentUser: Partial<User | undefined>,
-  movie: Data
-): Promise<void> => {
-  const data = await getWatched(currentUser);
-  const deleteData = data.find((item) => item.id === movie.id);
-  await myApi.delete(
-    `users/${currentUser?.id}/data-media/watched/${deleteData.idDB}.json`
-  );
-};
-
 export {
   deleteDataMedia,
   deleteUserDataMedia,
-  deleteWatched,
   getDataUsers,
   getDataFB,
-  getWatched,
   getUserDataMedia,
   postDataMedia,
   postUserDataMedia,
-  postWatched,
 };
