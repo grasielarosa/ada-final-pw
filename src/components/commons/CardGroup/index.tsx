@@ -77,7 +77,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   remove
                 </Button>
               )}
-              {isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
+              {!isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-text-center fs-3 bg-primary text-secondary"
@@ -85,7 +85,7 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
                   <AiOutlineEyeInvisible />
                 </Button>
               )}
-              {!isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
+              {isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
                 <Button
                   onClick={() => handleButton(movie)}
                   className="align-text-center fs-3 bg-primary text-secondary"
