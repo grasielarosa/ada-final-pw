@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/no-this-in-sfc */
 import React, { FC, useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,7 +7,6 @@ import {
   Nav,
   Navbar,
   NavbarBrand,
-  NavLink,
   NavbarToggler,
   NavItem,
 } from 'reactstrap';
@@ -23,45 +23,68 @@ const Header: FC = () => {
   const { logout } = useAuth();
 
   return (
-    <header className="align-self-start">
+    <header className="align-self-start mt-3">
       <Navbar expand="md" className="mx-4">
-        <NavbarBrand className="text-secondary">CinemAda</NavbarBrand>
+        <NavbarBrand>
+          <Link to="/" className="text-secondary text-decoration-none">
+            CinemAda
+          </Link>
+        </NavbarBrand>
         <NavbarToggler className="me-2" onClick={toggle} />
         <Collapse className="flex-row-reverse" isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink className="text-secondary" href="/">
+              <Link
+                className="text-secondary text-decoration-none nav-link"
+                to="/"
+              >
                 home
-              </NavLink>
+              </Link>
             </NavItem>
             <NavItem>
-              <Link className="text-secondary" to="/movies">
+              <Link
+                className="text-secondary text-decoration-none nav-link"
+                to="/movies"
+              >
                 movies
               </Link>
             </NavItem>
             <NavItem>
-              <NavLink className="text-secondary" href="/series">
+              <Link
+                className="text-secondary text-decoration-none nav-link"
+                to="/series"
+              >
                 series
-              </NavLink>
+              </Link>
             </NavItem>
             {currentUser?.role === 'admin' && (
               <NavItem>
-                <NavLink className="text-secondary" href="/users">
+                <Link
+                  className="text-secondary text-decoration-none nav-link"
+                  to="/users"
+                >
                   users
-                </NavLink>
+                </Link>
               </NavItem>
             )}
             {currentUser?.role === 'admin' && (
               <NavItem>
-                <NavLink className="text-secondary" href="/admin">
+                <Link
+                  className="text-secondary text-decoration-none nav-link"
+                  to="/admin"
+                >
                   admin
-                </NavLink>
+                </Link>
               </NavItem>
             )}
             <NavItem>
-              <NavLink className="text-secondary" href="#" onClick={logout}>
+              <Link
+                className="text-secondary text-decoration-none nav-link"
+                to="#"
+                onClick={logout}
+              >
                 logout
-              </NavLink>
+              </Link>
             </NavItem>
           </Nav>
         </Collapse>
