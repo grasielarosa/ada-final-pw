@@ -46,7 +46,7 @@ const useData = () => {
     });
   }, [dataIds]);
 
-  const handleButton = (movie: Data) => {
+  const handleButtonData = (movie: Data) => {
     if (!dataIds?.includes(movie.id)) {
       postDataMedia(movie);
       getDataFB().then((response) => {
@@ -62,7 +62,7 @@ const useData = () => {
   };
 
   return {
-    handleButton,
+    handleButtonData,
     handleChange,
     handlePageClick,
     dataTMDB,

@@ -8,7 +8,7 @@ const AdminPage: FC = () => {
   const {
     dataTMDB,
     handleChange,
-    handleButton,
+    handleButtonData,
     handlePageClick,
     totalPages,
     dataIds,
@@ -31,7 +31,7 @@ const AdminPage: FC = () => {
           </Label>
         </FormGroup>
       </Form>
-      <CardGroup items={dataTMDB} handleButton={handleButton} />
+      <CardGroup items={dataTMDB} handleButton={handleButtonData} />
       <Pagination pageCount={totalPages} handlePageClick={handlePageClick} />
     </Wrapper>
   );
