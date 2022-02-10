@@ -4,7 +4,7 @@ import { withAuth } from '../../hoc';
 import { useUsers } from '../../hooks/useUsers';
 
 const HomePage = () => {
-  const { currentUser, dataUser, handleButton } = useUsers();
+  const { currentUser } = useUsers();
 
   return (
     <Wrapper>
