@@ -1,4 +1,5 @@
 import React, { FC, FormEvent, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { useAuth } from '../../../hooks';
 
@@ -49,9 +50,21 @@ const Login: FC = () => {
           onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
         />
       </FormGroup>
-      <Button type="submit" className="bg-primary text-secondary mt-2">
-        LogIn
-      </Button>
+      <div>
+        <Button type="submit" className="bg-primary text-secondary mt-2">
+          Login
+        </Button>
+        <span className="mx-2 align-bottom fw-light">
+          Don&apos;t have an account?
+          <Link
+            to="/sign-up"
+            className=" fw-bold text-primary text-decoration-none"
+          >
+            {' '}
+            Make one!
+          </Link>
+        </span>
+      </div>
     </Form>
   );
 };
