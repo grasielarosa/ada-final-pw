@@ -1,5 +1,6 @@
 /* eslint-disable react/no-this-in-sfc */
 import React, { FC, useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Nav,
@@ -34,9 +35,9 @@ const Header: FC = () => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="text-secondary" href="/movies">
+              <Link className="text-secondary" to="/movies">
                 movies
-              </NavLink>
+              </Link>
             </NavItem>
             <NavItem>
               <NavLink className="text-secondary" href="/series">
