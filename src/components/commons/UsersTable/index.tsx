@@ -39,7 +39,8 @@ const UsersTable = () => {
         {users?.map((user) => {
           return (
             <tr key={user.id} className="align-middle">
-              <th scope="row">{user.name}</th>
+              <th scope="row">{user.firstname}</th>
+              <th scope="row">{user.lastname}</th>
               <td>{user.role}</td>
               <td>{user.email}</td>
               <td>{user.birthdate}</td>

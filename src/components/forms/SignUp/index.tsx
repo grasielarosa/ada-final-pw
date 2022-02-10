@@ -1,9 +1,11 @@
 import React, { FC, FormEvent, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import { signup } from './api';
 
 const defaultValues = {
-  name: '',
+  firstname: '',
+  lastname: '',
   email: '',
   password: '',
   birthdate: '',
@@ -13,26 +15,42 @@ const defaultValues = {
 
 const SignUp: FC = () => {
   const [inputs, setInputs] = useState(defaultValues);
+  const { push } = useHistory();
 
   const handleSubmit = (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
     signup({ ...inputs, birthdate: new Date(inputs.birthdate) });
+    push('/login');
   };
 
   return (
     <Form onSubmit={handleSubmit}>
-      <FormGroup>
-        <Label htmlFor="name">Nombre y apellido:</Label>
-        <Input
-          id="name"
-          type="text"
-          name="name"
-          value={inputs.name}
-          onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
-        />
+      <FormGroup className="d-flex flex-row justify-content-between">
+        <div>
+          <Label htmlFor="name">first name:</Label>
+          <Input
+            id="name"
+            type="text"
+            name="name"
+            value={inputs.firstname}
+            onChange={(e) =>
+              setInputs({ ...inputs, firstname: e.target.value })
+            }
+          />
+        </div>
+        <div>
+          <Label htmlFor="name">last name:</Label>
+          <Input
+            id="name"
+            type="text"
+            name="name"
+            value={inputs.lastname}
+            onChange={(e) => setInputs({ ...inputs, lastname: e.target.value })}
+          />
+        </div>
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="email">E-mail:</Label>
+        <Label htmlFor="email">e-mail:</Label>
         <Input
           id="email"
           type="text"
@@ -42,7 +60,7 @@ const SignUp: FC = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="password">Contraseña</Label>
+        <Label htmlFor="password">password</Label>
         <Input
           id="password"
           type="password"
@@ -52,7 +70,7 @@ const SignUp: FC = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Label htmlFor="birthdate">Fecha de nacimiento:</Label>
+        <Label htmlFor="birthdate">birthdate</Label>
         <Input
           id="birthdate"
           type="date"
@@ -61,9 +79,21 @@ const SignUp: FC = () => {
           onChange={(e) => setInputs({ ...inputs, birthdate: e.target.value })}
         />
       </FormGroup>
-      <Button className="bg-primary text-secondary mt-2" type="submit">
-        Create new user
-      </Button>
+      <div>
+        <Button className="bg-primary text-secondary mt-2" type="submit">
+          create new user
+        </Button>
+        <span className="mx-2 align-bottom fw-light">
+          Already have an account?
+          <Link
+            to="/login"
+            className=" fw-bold text-primary text-decoration-none"
+          >
+            {' '}
+            Go to login!
+          </Link>
+        </span>
+      </div>
     </Form>
   );
 };

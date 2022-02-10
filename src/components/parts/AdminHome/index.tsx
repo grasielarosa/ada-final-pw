@@ -10,7 +10,7 @@ const AdminHome = () => {
   return (
     <div className="justify-content-start">
       <div className="my-5">
-        <h3 className="text-secondary">Hi, {currentUser?.name}</h3>
+        <h3 className="text-secondary">Hi, {currentUser?.firstname}</h3>
         <p className="text-secondary">What do you want today?</p>
       </div>
       <Row className="g-3 my-3">
