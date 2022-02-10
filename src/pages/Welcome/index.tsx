@@ -11,10 +11,10 @@ const WelcomePage: FC = () => {
       <div className="row align-items-center h-100">
         <div className="col-sm-12 mx-auto">
           <Card className="bg-transparent text-center text-secondary h-100 justify-content-center">
-            <CardText>welcome to</CardText>
-            <h1>CinemAda</h1>
-            <div className="d-block">
-              <Button outline className="btn-outline-primary">
+            <CardText className="mt-5 mb-0">welcome to</CardText>
+            <h1 className="mb-5 mt-0">CinemAda</h1>
+            <div className="d-block mx-auto w-50 d-flex justify-content-evenly mt-5 px-5 py-3">
+              <Button outline className="btn-outline-primary w-25">
                 <Link
                   to="/login"
                   className="text-decoration-none text-secondary"
@@ -22,7 +22,7 @@ const WelcomePage: FC = () => {
                   Login
                 </Link>
               </Button>
-              <Button outline className="btn-outline-primary">
+              <Button outline className="btn-outline-primary w-25">
                 <Link
                   to="/sign-up"
                   className="text-decoration-none text-secondary"
