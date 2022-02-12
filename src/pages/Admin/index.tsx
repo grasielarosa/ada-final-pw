@@ -11,7 +11,6 @@ const AdminPage: FC = () => {
     handleButtonData,
     handlePageClick,
     totalPages,
-    dataIds,
   } = useData();
 
   return (

@@ -11,7 +11,7 @@ const AdminHome = () => {
     <div className="justify-content-start">
       <div className="my-5">
         <h3 className="text-secondary">Hi, {currentUser?.firstname}</h3>
-        <p className="text-secondary">What do you want today?</p>
+        <p className="text-secondary">What do you want to do today?</p>
       </div>
       <Row className="g-3 my-3">
         <Col sm="12" md="6" lg="3" className="h-100">
