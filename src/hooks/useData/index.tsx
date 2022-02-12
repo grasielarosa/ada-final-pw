@@ -10,6 +10,31 @@ const useData = () => {
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
   const [totalPages, setTotalPages] = useState<number>(1);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    setSearch(inputValue);
+  };
+
+  const handlePageClick = (paginate: any) => {
+    // eslint-disable-next-line prefer-const
+    let currentPage = paginate.selected + 1;
+    setPage(currentPage);
+  };
+
+  const isOnMyApi = (id: number): number | undefined => {
+    return dataIds?.find((items) => items === id);
+  };
+
+  const handleButtonData = async (movie: Data) => {
+    // eslint-disable-next-line no-unused-expressions
+    dataIds?.includes(movie.id)
+      ? await deleteDataMedia(movie)
+      : await postDataMedia(movie);
+    getDataFB().then((response) => {
+      setDataTMDB(response);
+    });
+  };
+
   useEffect(() => {
     getDataTMDB(page, search).then((response) => {
       setDataTMDB(response.results);
@@ -22,44 +47,11 @@ const useData = () => {
     });
   }, [page, search]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setSearch(inputValue);
-  };
-
-  const handlePageClick = (paginate: any) => {
-    // eslint-disable-next-line prefer-const
-    let currentPage = paginate.selected + 1;
-    setPage(currentPage);
-  };
-  // eslint-disable-next-line consistent-return
-  const isOnMyApi = (id: number) => {
-    const isOnDB = dataIds?.find((items) => items === id);
-    if (isOnDB) {
-      return true;
-    }
-  };
-
   useEffect(() => {
     getDataFB().then((response) => {
       setDataIds(response.map((item) => item.id));
     });
-  }, [dataIds]);
-
-  const handleButtonData = (movie: Data) => {
-    if (!dataIds?.includes(movie.id)) {
-      postDataMedia(movie);
-      getDataFB().then((response) => {
-        setDataIds(response.map((item) => item.id));
-      });
-    }
-    if (dataIds?.includes(movie.id)) {
-      deleteDataMedia(movie);
-      getDataFB().then((response) => {
-        setDataIds(response.map((item) => item.id));
-      });
-    }
-  };
+  }, [dataTMDB]);
 
   return {
     handleButtonData,
