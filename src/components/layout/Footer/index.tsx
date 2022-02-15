@@ -9,12 +9,14 @@ const Footer: FC = () => {
         <Col className="">
           <p className="text-secondary text-center fw-light">
             developed by{' '}
-            <Link
+            <a
               className="text-secondary text-decoration-none"
-              to="https://www.linkedin.com/in/grasielarosa/"
+              href="https://www.linkedin.com/in/grasielarosa/"
+              target="_blank"
+              rel="noreferrer"
             >
               Grasiela Rosa
-            </Link>
+            </a>
           </p>
         </Col>
       </Row>
