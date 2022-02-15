@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable no-use-before-define */
 
 import { useContext, useEffect, useState } from 'react';
@@ -24,7 +25,7 @@ const useAuth = () => {
 
   useEffect(() => {
     loginWithToken();
-  }, []);
+  });
 
   const createUserToken = async (user: User): Promise<string | null> => {
     const newToken = Math.random().toString(36).substr(2);
@@ -36,10 +37,7 @@ const useAuth = () => {
       return null;
     }
   };
-  /**
-   * @param email
-   * @param password
-   */
+
   const login = async (email: string, password: string) => {
     try {
       const response = await myApi.get('/users.json');

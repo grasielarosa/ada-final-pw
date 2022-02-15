@@ -1,4 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { useContext, useEffect, useState } from 'react';
 import {
   deleteUserDataMedia,
   getDataFB,
@@ -48,7 +49,7 @@ const useUsers = () => {
       setDataUser(response);
       setDataIdsUser(response.map((item) => item.id));
     });
-  }, []);
+  });
 
   return {
     currentUser,

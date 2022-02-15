@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect, useState } from 'react';
 import { deleteDataMedia, getDataFB, postDataMedia } from '../../api/myApi';
 import { getDataTMDB } from '../../api/tmdb';
