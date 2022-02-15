@@ -1,6 +1,4 @@
-/* eslint-disable no-shadow */
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import {
   deleteUserDataMedia,
   getDataFB,
@@ -12,53 +10,52 @@ import { Data } from '../../types';
 
 const useUsers = () => {
   // const { location } = useHistory();
-  const [data, setData] = useState<Data[]>();
+  const [dataFB, setDataFB] = useState<Data[]>();
   const [dataUser, setDataUser] = useState<Data[]>();
   const { currentUser } = useContext(AuthContext);
-  const [dataIds, setDataIds] = useState<(number | undefined)[]>();
+  const [dataIdsUser, setDataIdsUser] = useState<(number | undefined)[]>();
 
   // eslint-disable-next-line consistent-return
   const isOnMyApiUser = (id: number) => {
-    const isOnDB = dataIds?.find((items) => items === id);
-    if (isOnDB) {
+    const res = dataIdsUser?.find((items) => items === id);
+    if (res) {
       return true;
     }
   };
 
-  const handleButton = (movie: Data) => {
-    if (!dataIds?.includes(movie.id)) {
-      postUserDataMedia(currentUser, movie);
-      getUserDataMedia(currentUser).then((response) => {
-        setDataIds(response.map((item) => item.id));
-      });
-    }
-    if (dataIds?.includes(movie.id)) {
-      deleteUserDataMedia(currentUser, movie);
-      getUserDataMedia(currentUser).then((response) => {
-        setDataIds(response.map((item) => item.id));
-      });
-    }
+  const handleButton = async (movie: Data) => {
+    // eslint-disable-next-line no-unused-expressions
+    dataIdsUser?.includes(movie.id)
+      ? await deleteUserDataMedia(currentUser, movie)
+      : await postUserDataMedia(currentUser, movie);
+    getUserDataMedia(currentUser).then((response) => {
+      setDataUser(response);
+      setDataIdsUser(response.map((item) => item.id));
+    });
+    getDataFB().then((response) => {
+      setDataFB(response);
+    });
   };
 
   useEffect(() => {
     getDataFB().then((response) => {
-      setData(response);
+      setDataFB(response);
     });
   }, []);
 
   useEffect(() => {
     getUserDataMedia(currentUser).then((response) => {
       setDataUser(response);
-      setDataIds(response.map((item) => item.id));
+      setDataIdsUser(response.map((item) => item.id));
     });
   }, []);
 
   return {
     currentUser,
-    data,
-    dataIds,
+    dataFB,
+    dataIdsUser,
     dataUser,
-    setData,
+    setDataFB,
     handleButton,
     isOnMyApiUser,
   };

@@ -32,7 +32,6 @@ const DetailPage: FC = () => {
   useEffect(() => {
     getDataMediaDetail().then((response) => {
       const detail = response.filter((item) => item.id === Number(id));
-      console.log(detail);
       setData(detail);
     });
   }, []);
@@ -41,7 +40,7 @@ const DetailPage: FC = () => {
   //   getVideos(Number(id)).then((response) => {
   //     setVideos(response);
   //   });
-  // }, [data]);
+  // }, []);
 
   // useEffect(() => {
   //   getSeries(Number(id)).then((response) => {

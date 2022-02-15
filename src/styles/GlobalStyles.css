@@ -58,7 +58,24 @@ h3 {
   border-color: #fffacd;
 }
 
+.btn-outline-primary:hover {
+  color: #fffacd;
+  background-color: #1b1a27c7;
+}
+
 .border-secondary {
   border-color: #fffacd !important;
 }
 /*  new classes */
+
+.page-link {
+  color: #fffacd !important;
+  border: solid #fffacd !important;
+  text-decoration: none;
+  background-color: #1b1a27 !important;
+}
+
+.page-link:hover {
+  color: #430a6cbc !important;
+  background-color: #fffacda6 !important;
+}

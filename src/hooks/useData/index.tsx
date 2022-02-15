@@ -21,8 +21,12 @@ const useData = () => {
     setPage(currentPage);
   };
 
-  const isOnMyApi = (id: number): number | undefined => {
-    return dataIds?.find((items) => items === id);
+  // eslint-disable-next-line consistent-return
+  const isOnMyApi = (id: number) => {
+    const res = dataIds?.find((items) => items === id);
+    if (res) {
+      return true;
+    }
   };
 
   const handleButtonData = async (movie: Data) => {
@@ -31,18 +35,13 @@ const useData = () => {
       ? await deleteDataMedia(movie)
       : await postDataMedia(movie);
     getDataFB().then((response) => {
-      setDataTMDB(response);
+      setDataIds(response.map((item) => item.id));
     });
   };
 
   useEffect(() => {
     getDataTMDB(page, search).then((response) => {
       setDataTMDB(response.results);
-    });
-  }, [page, search]);
-
-  useEffect(() => {
-    getDataTMDB(page, search).then((response) => {
       setTotalPages(response.total_pages);
     });
   }, [page, search]);
@@ -51,14 +50,13 @@ const useData = () => {
     getDataFB().then((response) => {
       setDataIds(response.map((item) => item.id));
     });
-  }, [dataTMDB]);
+  }, []);
 
   return {
     handleButtonData,
     handleChange,
     handlePageClick,
     dataTMDB,
-    dataIds,
     isOnMyApi,
     page,
     totalPages,
