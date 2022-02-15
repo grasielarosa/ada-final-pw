@@ -22,15 +22,15 @@ const AdminPage: FC = () => {
             name="search"
             placeholder="search"
             type="search"
-            className="rounded-pill mt-3"
+            className="rounded-pill mt-3 ps-5"
             onChange={handleChange}
           />
           <Label for="search" className="ps-4">
-            teste
+            search
           </Label>
         </FormGroup>
       </Form>
-      <CardGroup items={dataTMDB} handleButton={handleButtonData} />
+      <CardGroup items={dataTMDB} />
       <Pagination pageCount={totalPages} handlePageClick={handlePageClick} />
     </Wrapper>
   );

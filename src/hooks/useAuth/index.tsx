@@ -14,7 +14,7 @@ const useAuth = () => {
   );
   const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>();
 
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const { setCurrentUser } = useContext(AuthContext);
 
   const { push } = useHistory();
 

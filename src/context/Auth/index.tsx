@@ -8,7 +8,6 @@ import React, {
   Dispatch,
   FC,
   SetStateAction,
-  useContext,
   useState,
 } from 'react';
 import { User } from '../../types';
@@ -33,10 +32,4 @@ const AuthProvider: FC = ({ children }) => {
   );
 };
 
-const useRole = () => {
-  const context = useContext(AuthContext);
-  const { currentUser, setCurrentUser } = context;
-  return { currentUser, setCurrentUser };
-};
-
-export { AuthContext, AuthProvider, useRole };
+export { AuthContext, AuthProvider };

@@ -21,12 +21,11 @@ import { Rating } from '../Rating';
 
 type Props = {
   items?: Data[];
-  handleButton: (movie: Data) => void;
 };
 
-const CardGroup: FC<Props> = ({ items, handleButton }) => {
-  const { isOnMyApi } = useData();
-  const { currentUser, isOnMyApiUser } = useUsers();
+const CardGroup: FC<Props> = ({ items }) => {
+  const { isOnMyApi, handleButtonData } = useData();
+  const { currentUser, isOnMyApiUser, handleButton } = useUsers();
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
 
@@ -41,53 +40,53 @@ const CardGroup: FC<Props> = ({ items, handleButton }) => {
     align-items-stretch
     rounded"
     >
-      {items?.map((movie) => (
-        <Col key={movie.id}>
+      {items?.map((item) => (
+        <Col key={item.id}>
           <Card className="bg-secondary h-100 justify-content-between">
             <Link
-              to={`/detail/${movie.id}`}
+              to={`/detail/${item.id}`}
               className="text-decoration-none text-primary"
             >
               <CardImg
-                alt={`${movie.title || movie.name} movie poster`}
-                src={cardImage(movie.poster_path)}
+                alt={`${item.title || item.name} movie poster`}
+                src={cardImage(item.poster_path)}
                 top
                 width="100%"
                 className="rounded"
               />
               <CardBody>
-                <CardTitle tag="h5">{movie.title || movie.name}</CardTitle>
-                <Rating rating={movie.vote_average} />
+                <CardTitle tag="h5">{item.title || item.name}</CardTitle>
+                <Rating rating={item.vote_average} />
               </CardBody>
             </Link>
             <CardFooter className="border-top-0 bg-transparent d-grid">
-              {!isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
+              {!isOnMyApi(item.id) && currentUser?.role === 'admin' && (
                 <Button
-                  onClick={() => handleButton(movie)}
+                  onClick={() => handleButtonData(item)}
                   className="align-text-center bg-primary text-secondary"
                 >
                   add
                 </Button>
               )}
-              {isOnMyApi(movie.id) && currentUser?.role === 'admin' && (
+              {isOnMyApi(item.id) && currentUser?.role === 'admin' && (
                 <Button
-                  onClick={() => handleButton(movie)}
+                  onClick={() => handleButtonData(item)}
                   className="align-text-center bg-primary text-secondary"
                 >
                   remove
                 </Button>
               )}
-              {!isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
+              {!isOnMyApiUser(item.id) && currentUser?.role !== 'admin' && (
                 <Button
-                  onClick={() => handleButton(movie)}
+                  onClick={() => handleButton(item)}
                   className="align-text-center fs-3 bg-primary text-secondary"
                 >
                   <AiOutlineEyeInvisible />
                 </Button>
               )}
-              {isOnMyApiUser(movie.id) && currentUser?.role !== 'admin' && (
+              {isOnMyApiUser(item.id) && currentUser?.role !== 'admin' && (
                 <Button
-                  onClick={() => handleButton(movie)}
+                  onClick={() => handleButton(item)}
                   className="align-text-center fs-3 bg-primary text-secondary"
                 >
                   <AiOutlineEye />
