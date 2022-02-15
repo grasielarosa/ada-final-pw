@@ -10,9 +10,9 @@ const Pagination: FC<Props> = ({ pageCount, handlePageClick }): JSX.Element => {
   return (
     <div className=" my-4">
       <ReactPaginate
-        previousLabel="< previous"
+        previousLabel="<< first page"
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel="last page >>"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
