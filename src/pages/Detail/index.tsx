@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable no-unused-expressions */
 import React, { FC, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import {
@@ -16,6 +18,7 @@ import { withAuth } from '../../hoc';
 import { Data, Movies } from '../../types';
 import { getDataMediaDetail, getSeries, getVideos } from './api';
 import defaultImage from '../../assets/images/image-not-found.jpeg';
+import { Rating } from '../../components/commons/Rating';
 
 type ParamsType = {
   id: string;
@@ -23,6 +26,7 @@ type ParamsType = {
 
 const DetailPage: FC = () => {
   const [data, setData] = useState<Data[]>();
+  const [mediaType, setMediaType] = useState<(boolean | undefined)[]>();
   const [videos, setVideos] = useState<Movies[]>();
 
   const { id } = useParams<ParamsType>();
@@ -32,21 +36,21 @@ const DetailPage: FC = () => {
   useEffect(() => {
     getDataMediaDetail().then((response) => {
       const detail = response.filter((item) => item.id === Number(id));
+      const type = detail.map((item) => item.media_type !== 'tv');
       setData(detail);
+      setMediaType(type);
     });
   }, []);
 
-  // useEffect(() => {
-  //   getVideos(Number(id)).then((response) => {
-  //     setVideos(response);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   getSeries(Number(id)).then((response) => {
-  //     setVideos(response);
-  //   });
-  // }, [data]);
+  useEffect(() => {
+    mediaType
+      ? getVideos(Number(id)).then((response) => {
+        setVideos(response);
+      })
+      : getSeries(Number(id)).then((response) => {
+        setVideos(response);
+      });
+  }, []);
 
   const cardImage = (image: string | null) =>
     !image ? defaultImage : `http://image.tmdb.org/t/p/w500/${image}`;
@@ -78,7 +82,7 @@ const DetailPage: FC = () => {
                         Release date: {item.release_date}
                       </small>
                       <br />
-                      <small className="text-muted">{item.vote_average}</small>
+                      <Rating rating={item.vote_average} />
                     </CardText>
                     <CardText>{item.overview}</CardText>
 

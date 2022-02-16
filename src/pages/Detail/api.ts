@@ -7,14 +7,9 @@ const getDataMediaDetail = async () => {
   return mapToArray(response.data);
 };
 
-const getDataMediaDetail2 = async () => {
-  const response = await myApi.get<Data>(`data-media.json`);
-  return response.data;
-};
-
 const getVideos = async (id: number) => {
   const response = await theMovieApi.get(`/movie/${id}/videos`);
-  return response.data;
+  return mapToArray(response.data.results);
 };
 const getSeries = async (id: number) => {
   const response = await theMovieApi.get(`/tv/${id}/videos`);
