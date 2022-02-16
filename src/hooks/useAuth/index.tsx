@@ -25,7 +25,7 @@ const useAuth = () => {
 
   useEffect(() => {
     loginWithToken();
-  });
+  }, []);
 
   const createUserToken = async (user: User): Promise<string | null> => {
     const newToken = Math.random().toString(36).substr(2);

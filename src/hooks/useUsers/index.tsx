@@ -49,7 +49,7 @@ const useUsers = () => {
       setDataUser(response);
       setDataIdsUser(response.map((item) => item.id));
     });
-  });
+  }, []);
 
   return {
     currentUser,
