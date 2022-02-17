@@ -1,2 +1,3 @@
-export { SignUp } from './SignUp';
+export { SearchForm } from './SearchAdmin';
 export { Login } from './Login';
+export { SignUp } from './SignUp';
