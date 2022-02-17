@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { AiOutlineUserDelete } from 'react-icons/ai';
 import { Button, Table } from 'reactstrap';
+import moment from 'moment';
 import { deleteUser, getUsersData } from '../../../pages/Users/api';
 import { User } from '../../../types';
 
@@ -43,7 +44,7 @@ const UsersTable = () => {
               <th scope="row">{user.lastname}</th>
               <td>{user.role}</td>
               <td>{user.email}</td>
-              <td>{user.birthdate}</td>
+              <td>{moment(new Date(user.birthdate)).format('DD-MM-YYYY')}</td>
               <td>
                 <Button
                   onClick={() => {

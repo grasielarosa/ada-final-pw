@@ -4,7 +4,7 @@ export type User = {
   lastname: string;
   email: string;
   role?: string;
-  birthdate: Date;
+  birthdate: string | Date;
   password: string;
   sessionToken?: string;
 };
