@@ -1,4 +1,4 @@
 export { CardGroup, Container, Pagination, UsersTable } from './commons';
-export { SignUp, Login } from './forms';
-export { Header, Footer, Wrapper } from './layout';
+export { SearchForm, Login, SignUp } from './forms';
+export { Footer, Header, Wrapper } from './layout';
 export { Admin, User } from './parts';

@@ -1,25 +1,37 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { deleteDataMedia, getDataFB, postDataMedia } from '../../api/myApi';
 import { getDataTMDB } from '../../api/tmdb';
 import { Data } from '../../types';
 
 const useData = () => {
-  const [page, setPage] = useState<number>(1);
-  const [search, setSearch] = useState('');
+  const params = new URLSearchParams(window.location.search);
+  const search = params.get('search') || '';
+  const page = Number(params.get('page')) || 1;
+
   const [dataTMDB, setDataTMDB] = useState<Data[]>();
   const [dataIds, setDataIds] = useState<(number | undefined)[]>();
   const [totalPages, setTotalPages] = useState<number>(1);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    setSearch(inputValue);
+  const { push } = useHistory();
+
+  const setPageParam = (newPage: number) => {
+    params.set('page', newPage.toString());
+    push(`${window.location.pathname}?${params.toString()}`);
+  };
+
+  const setSearchParam = (searchInput: string) => {
+    params.set('search', searchInput);
+    setPageParam(1);
+    push(`${window.location.pathname}?${params.toString()}`);
   };
 
   const handlePageClick = (paginate: any) => {
     // eslint-disable-next-line prefer-const
     let currentPage = paginate.selected + 1;
-    setPage(currentPage);
+    setPageParam(currentPage);
+    window.scroll(0, 0);
   };
 
   // eslint-disable-next-line consistent-return
@@ -55,13 +67,13 @@ const useData = () => {
 
   return {
     handleButtonData,
-    handleChange,
     handlePageClick,
     dataTMDB,
     isOnMyApi,
     page,
     totalPages,
-    setPage,
+    setPageParam,
+    setSearchParam,
   };
 };
 

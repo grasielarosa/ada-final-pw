@@ -1,6 +1,6 @@
 import { mapToArray } from '../../helpers';
 import { myApi, theMovieApi } from '../../utils';
-import { Data, Movies } from '../../types';
+import { Data } from '../../types';
 
 const getDataMediaDetail = async () => {
   const response = await myApi.get<Data>(`data-media.json`);
