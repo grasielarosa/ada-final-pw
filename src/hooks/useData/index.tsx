@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { deleteDataMedia, getDataFB, postDataMedia } from '../../api/myApi';
 import { getDataTMDB } from '../../api/tmdb';
 import { Data } from '../../types';
@@ -16,8 +16,8 @@ const useData = () => {
 
   const { push } = useHistory();
 
-  const setPageParam = (newPage: number) => {
-    params.set('page', newPage.toString());
+  const setPageParam = (nextPage: number) => {
+    params.set('page', nextPage.toString());
     push(`${window.location.pathname}?${params.toString()}`);
   };
 

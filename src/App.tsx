@@ -31,7 +31,7 @@ const App: FC = () => {
           <Route path="/detail/:id" component={Detail} />
           <Route path="/login" component={Login} />
           <Route path="/sign-up" component={SignUp} />
-          <Route path="/*" component={PageNotFound} />
+          {/* <Route path="/*" component={PageNotFound} /> */}
           <Route path="/" component={Welcome} />
         </Switch>
       </Router>
