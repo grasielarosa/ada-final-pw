@@ -1,6 +1,3 @@
-![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white) ![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
-![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
-
 ### English and Portuguese below.
 
 ### Español
@@ -9,7 +6,7 @@
 
 Desarrolado como proyecto de final de curso para a [formación de Frontend](https://adaitw.org/carreras/) de [Ada ITW](https://adaitw.org/).
 
-## Desarroladora: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/)
+## Desarroladora: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/) ![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
 
 Este proyecto fue desarrollado utilizando React.JS e TypeScript, además de bibliotecas adicionales para la creación de componentes. En ellos fueron utilizados hooks, context, la api externa TheMovieAPi y una api propia en Firebase.
 
