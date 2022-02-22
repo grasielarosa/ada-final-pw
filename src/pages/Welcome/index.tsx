@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { FC } from 'react';
+import GithubCorner from 'react-github-corner';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardText } from 'reactstrap';
 import { Footer } from '../../components';
@@ -8,6 +9,11 @@ import { withAuth } from '../../hoc';
 const WelcomePage: FC = () => {
   return (
     <div className="container h-100">
+      <GithubCorner
+        href="https://github.com/grasielarosa/ada-final-pw"
+        octoColor="#1b1a27"
+        bannerColor="#fffacd"
+      />
       <div className="row align-items-center h-100">
         <div className="col-sm-12 mx-auto">
           <Card className="bg-transparent text-center text-secondary h-100 justify-content-center">
