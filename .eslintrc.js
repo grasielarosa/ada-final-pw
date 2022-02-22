@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['prettier', 'react', 'react-hooks', '@babel'],
   rules: {
+    'no-console': 'off',
     'arrow-body-style': 0,
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': 0,

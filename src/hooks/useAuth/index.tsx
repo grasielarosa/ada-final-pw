@@ -4,10 +4,11 @@
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/Auth';
-// import { useRole } from '../../context/Auth';
 import { mapToArray } from '../../helpers';
 import { User } from '../../types';
 import { myApi } from '../../utils';
+
+type Payload = Omit<User, 'id'>;
 
 const useAuth = () => {
   const [tokenStorage, setTokenStorage] = useState<string | undefined>(
@@ -56,10 +57,10 @@ const useAuth = () => {
           push('/home');
         }
       } else {
-        throw new Error('el usuario no existe o la contraseña es erronea');
+        throw new Error('The user or password is incorrect');
       }
-    } catch (e) {
-      // console.log(e);
+    } catch (err) {
+      throw new Error();
     }
   };
 
@@ -81,8 +82,16 @@ const useAuth = () => {
       } else {
         setIsUserLoggedIn(false);
       }
-    } catch (e) {
-      // console.log(e);
+    } catch (err) {
+      throw new Error();
+    }
+  };
+
+  const signup = async (payload: Payload) => {
+    try {
+      await myApi.post('/users.json', payload);
+    } catch (err) {
+      throw new Error();
     }
   };
 
@@ -93,7 +102,7 @@ const useAuth = () => {
     push('/');
   };
 
-  return { isUserLoggedIn, login, loginWithToken, logout };
+  return { isUserLoggedIn, login, loginWithToken, logout, signup };
 };
 
 export { useAuth };
