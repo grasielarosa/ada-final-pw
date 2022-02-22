@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { deleteDataMedia, getDataFB, postDataMedia } from '../../api/myApi';
 import { getDataTMDB } from '../../api/tmdb';
 import { Data } from '../../types';

@@ -2,7 +2,7 @@ import { mapToArray } from '../../helpers';
 import { myApi, theMovieApi } from '../../utils';
 import { Data } from '../../types';
 
-const getDataMediaDetail = async () => {
+const getDataMediaDetail = async (): Promise<any[]> => {
   try {
     const response = await myApi.get<Data>(`data-media.json`);
     return mapToArray(response.data);
@@ -11,7 +11,7 @@ const getDataMediaDetail = async () => {
   }
 };
 
-const getVideos = async (id: number) => {
+const getVideos = async (id: number): Promise<any[]> => {
   try {
     const response = await theMovieApi.get(`/movie/${id}/videos`);
     return mapToArray(response.data.results);
@@ -19,7 +19,7 @@ const getVideos = async (id: number) => {
     throw new Error();
   }
 };
-const getSeries = async (id: number) => {
+const getSeries = async (id: number): Promise<any[]> => {
   try {
     const response = await theMovieApi.get(`/tv/${id}/videos`);
     return response.data.results;
