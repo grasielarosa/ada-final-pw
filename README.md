@@ -6,7 +6,9 @@
 
 Desarrolado como proyecto de final de curso para a [formación de Frontend](https://adaitw.org/carreras/) de [Ada ITW](https://adaitw.org/).
 
-## Desarroladora: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/) ![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
+## Desarroladora:
+
+[![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/) ![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
 
 Este proyecto fue desarrollado utilizando React.JS e TypeScript, además de bibliotecas adicionales para la creación de componentes. En ellos fueron utilizados hooks, context, la api externa TheMovieAPi y una api propia en Firebase.
 
@@ -33,7 +35,9 @@ Para acceder como admin, solicite.
 
 Developed as final project to [Frontend career ](https://adaitw.org/carreras/) at [Ada ITW](https://adaitw.org/).
 
-## Developer: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/)
+## Developer:
+
+[![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/) ![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
 
 This project was developed using React.JS and TypeScript, in addition to another libraries for component creation. In them, was used hooks, context, the external api TheMovieAPi and a proper api in Firebase.
 
@@ -61,7 +65,9 @@ To access as admin, request.
 
 Desenvolvido como projeto de final de curso para a [formação de Frontend](https://adaitw.org/carreras/) da [Ada ITW](https://adaitw.org/).
 
-## Desenvolvedora: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/)
+## Desenvolvedora:
+
+[![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/) ![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
 
 Este projeto foi desenvolvido usando React.JS e TypeScript, além de bibliotecas adicionais para criação de componentes. Nele foram utilizados hooks, context, api externa TheMovieAPi e api própria criada com Firebase.
 
