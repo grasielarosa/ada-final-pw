@@ -26,7 +26,7 @@ type ParamsType = {
 
 const DetailPage: FC = () => {
   const [data, setData] = useState<Data[]>();
-  const [mediaType, setMediaType] = useState<(boolean | undefined)[]>();
+  const [mediaType, setMediaType] = useState<boolean>();
   const [videos, setVideos] = useState<Movies[]>();
 
   const { id } = useParams<ParamsType>();
@@ -35,9 +35,11 @@ const DetailPage: FC = () => {
 
   useEffect(() => {
     getDataMediaDetail().then((response) => {
-      const detail = response.filter((item) => item.id === Number(id));
-      const type = detail.map((item) => item.media_type !== 'tv');
-      setData(detail);
+      const map = response.filter((item) => item.id === Number(id));
+      const detail = response.find((item) => item.id === Number(id));
+      const type = detail.media_type === 'tv';
+      console.log('d', detail, 't', type);
+      setData(map);
       setMediaType(type);
     });
   }, []);
