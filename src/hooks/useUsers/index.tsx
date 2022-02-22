@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { useContext, useEffect, useState } from 'react';
 import {
@@ -10,7 +11,6 @@ import { AuthContext } from '../../context/Auth';
 import { Data } from '../../types';
 
 const useUsers = () => {
-  // const { location } = useHistory();
   const [dataFB, setDataFB] = useState<Data[]>();
   const [dataUser, setDataUser] = useState<Data[]>();
   const { currentUser } = useContext(AuthContext);
