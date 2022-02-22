@@ -1,7 +1,7 @@
 import React, { FC, FormEvent, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
-import { signup } from './api';
+import { useAuth } from '../../../hooks';
 
 const defaultValues = {
   firstname: '',
@@ -16,6 +16,7 @@ const defaultValues = {
 const SignUp: FC = () => {
   const [inputs, setInputs] = useState(defaultValues);
   const { push } = useHistory();
+  const { signup } = useAuth();
 
   const handleSubmit = (e: FormEvent<HTMLElement>) => {
     e.preventDefault();

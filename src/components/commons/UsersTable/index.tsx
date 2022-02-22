@@ -14,7 +14,7 @@ const UsersTable = () => {
       const response = await getUsersData();
       setUsers(response);
     } catch (err) {
-      // console.log(err);
+      throw new Error();
     }
   };
   const removeUser = async (id: string) => {

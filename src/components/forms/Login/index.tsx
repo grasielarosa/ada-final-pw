@@ -18,7 +18,7 @@ const Login: FC = () => {
     try {
       await login(inputs.email, inputs.password);
     } catch (err) {
-      // setAlert(e.message);
+      throw new Error();
     }
   };
 
