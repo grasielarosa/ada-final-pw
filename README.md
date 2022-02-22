@@ -1,46 +1,94 @@
-# Getting Started with Create React App
+https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 
-## Available Scripts
+https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
 
-In the project directory, you can run:
+https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 
-### `npm start`
+![GitHub followers](https://img.shields.io/github/followers/grasielarosa?label=Follow&style=social)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### English and Portuguese below.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Español
 
-### `npm test`
+# CinemAda
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Desarrolado como proyecto de final de curso para a [formación de Frontend](https://adaitw.org/carreras/) de [Ada ITW](https://adaitw.org/).
 
-### `npm run build`
+## Desarroladora: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Este proyecto fue desarrollado utilizando React.JS e TypeScript, además de bibliotecas adicionales para la creación de componentes. En ellos fueron utilizados hooks, context, la api externa TheMovieAPi y una api propia en Firebase.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Estructura
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La división principal está hecha com roles, en que Admin tiene acceso total y User acceso limitado (roles fueron definidos con Context).
+Admin tiene acceso a la api [TheMovieApi](https://www.themoviedb.org/), en donde puede seleccionar las películas y series que estarán disponibles para consumo de user por medio de la api en Firebase. Admin también gestiona a los usuarios, excluyéndolos o definiendo roles.
+User accede a las películas y series elegidas por el Admin y tiene la posibilidad de marcarlas como vistas. En su home, el usuario encuentra por separado 3 sectores: películas vistas por el usuario, series vistas por el usuario y todos los ítems definidos por el administrador.
 
-### `npm run eject`
+## Versiones utilizadas:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+node: v16.3.0
+react: 17.0.2
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Deploy:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+El deploy está hecho aatualmente con github pages.
+Para acceder, puedes crear un usuario através del botón sign-up.
+Para acceder como admin, solicite.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### English
 
-## Learn More
+# CinemAda
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Developed as final project to [Frontend career ](https://adaitw.org/carreras/) at [Ada ITW](https://adaitw.org/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Developer: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/)
+
+This project was developed using React.JS and TypeScript, in addition to another libraries for component creation. In them, was used hooks, context, the external api TheMovieAPi and a proper api in Firebase.
+
+## Structure
+
+The main division is made with roles, where Admin has full access and User has limited access (roles were defined with Context).
+Admin has access to the [TheMovieApi](https://www.themoviedb.org/), where it’s possible to select the movies and series that will be available for user consumption through the Firebase api. Admin also manages users, excluding them or defining roles.
+
+User access the movies and series chosen by the Admin and has the ability to mark them as viewed. In his home, the user finds 3 sectors separately: movies seen by the user, series seen by the user and all items defined by the administrator.
+
+## Versions:
+
+node: v16.3.0
+react: 17.0.2
+
+## Deploy:
+
+The deploy is currently done with github pages.
+To access as user, you can create a user through the sign-up button.
+To access as admin, request.
+
+### Português
+
+# CinemAda
+
+Desenvolvido como projeto de final de curso para a [formação de Frontend](https://adaitw.org/carreras/) da [Ada ITW](https://adaitw.org/).
+
+## Desenvolvedora: [![Linkedin: grasielarosa](https://img.shields.io/badge/-grasielarosa-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/grasielarosa/)](https://www.linkedin.com/in/grasielarosa/)
+
+Este projeto foi desenvolvido usando React.JS e TypeScript, além de bibliotecas adicionais para criação de componentes. Nele foram utilizados hooks, context, api externa TheMovieAPi e api própria criada com Firebase.
+
+## Estrutura
+
+A divisão principal está feita em roles, onde Admin tem acesso total e User acesso limitado (roles foram definidos com Context).
+Admin tem acesso a api [TheMovieApi](https://www.themoviedb.org/), onde pode selecionar os filmes e séries que estarão disponíveis para consumo de user através da api de Firebase. Admin também gestiona os usuários, excluindo e definindo roles.User acessa os filmes e séries disponibilizados por Admin e tem a possibilidade de marca-los como vistos. Na home do usuário encontram-se separados 3 setores: filmes vistos pelo usuário, séries vistas pelo usuário, todos os itens definidos pelo administrador.
+
+## Versões utilizadas:
+
+node: v16.3.0
+react: 17.0.2
+
+## Deploy:
+
+O deploy está feito atualmente com github pages.
+Para acessá-lo, crie um usuário através do botão sign-up.
+Para acessá-lo como admin, solicite.
+
+Github-corners license: Copyright (c) 2016 [Tim Holman](http://tholman.com)
